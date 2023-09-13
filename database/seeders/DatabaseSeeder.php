@@ -16,21 +16,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(KategoriSeeder::class);
-        $this->call(UnitSeeder::class);
-
-        User::create([
-            'name' => 'Administrator',
-            'username' => 'admin',
-            'password' => Hash::make('adminoke'),
-            'role' => 'admin',
-        ]);
-
-        User::create([
-            'name' => 'IQBAL FARHAN SYHUADA',
-            'username' => 'iqbal',
-            'password' => Hash::make('adminoke'),
-            'role' => 'user',
+        $this->call([
+            RoleSeeder::class,
+            UnitSeeder::class,
+            UserSeeder::class,
+            KategoriSeeder::class,
         ]);
     }
 }

@@ -6,15 +6,15 @@
     </div>
     <div>Total data yang ditampilkan : {{ $datas->count() }}</div>
     <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl">
-        <table class="table table-xs">
+        <table class="table">
             <thead>
                 <tr>
                     <th></th>
                     <th>Name</th>
                     <th>Username</th>
-                    <th>role</th>
+                    <th>Role</th>
                     <th>Unit</th>
-                    <th>action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,20 +23,20 @@
                         <th>{{ $data->id }}</th>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->username }}</td>
-                        <td>{{ $data->role }}</td>
+                        <td>{{ implode(', ', $data->getRoleNames()->toArray()) }}</td>
                         <td>{{ $data->unit->name ?? '' }}</td>
                         <td>
-                            <button class="btn btn-xs btn-success tooltip" data-tip="edit user"
+                            <button class="btn btn-xs btn-circle tooltip" data-tip="edit user"
                                 wire:click.prevent="$emit('showEdit', {{ $data->id }})">
                                 @livewire('component.icon', ['name' => 'edit'], key(uniqid()))
                             </button>
 
-                            <button class="btn btn-xs btn-neutral tooltip" data-tip="reset password"
+                            <button class="btn btn-xs btn-circle tooltip" data-tip="reset password"
                                 wire:click.prevent="$emit('resetuserpass', {{ $data->id }})">
                                 @livewire('component.icon', ['name' => 'key'], key(uniqid()))
                             </button>
 
-                            <button class="btn btn-xs btn-error tooltip" data-tip="hapus user"
+                            <button class="btn btn-xs btn-circle tooltip" data-tip="hapus user"
                                 wire:click.prevent="deleteUser('{{ $data->id }}')">
                                 @livewire('component.icon', ['name' => 'x'], key(uniqid()))
                             </button>

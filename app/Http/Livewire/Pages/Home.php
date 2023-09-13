@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Home extends Component
 {
-    public $kat;
+    public $kat = 1;
     public $katlabel;
     public $sub;
     public $sublabel;

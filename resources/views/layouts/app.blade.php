@@ -11,14 +11,14 @@
     @livewireStyles
 </head>
 
-<body class="bg-base-200" data-theme="bumblebee">
+<body data-theme="light">
 
     @auth
-        <div class="drawer drawer-open">
+        <div class="drawer lg:drawer-open">
             <input id="drawer" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col flex-1 min-h-screen">
+            <div class="drawer-content bg-base-200 flex flex-col flex-1 min-h-screen">
                 @livewire('component.navbar')
-                <div class="p-6">
+                <div class="w-full max-w-7xl p-6 mx-auto">
                     {{ $slot }}
                 </div>
                 @livewire('component.logout')

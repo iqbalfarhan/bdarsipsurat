@@ -1,6 +1,6 @@
-<div class="navbar bg-base-100 shadow-sm">
+<div class="navbar bg-neutral text-neutral-content shadow-sm">
     <div class="flex-none">
-        <label for="drawer" class="btn btn-square btn-ghost">
+        <label for="drawer" class="btn btn-square btn-ghost lg:hidden">
             @livewire('component.icon', ['name' => 'menu'])
         </label>
     </div>

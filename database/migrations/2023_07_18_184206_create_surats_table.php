@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->foreignId('unit_id')->constrained()->onDelete('cascade');
             $table->enum('jenis', ['masuk', 'keluar'])->default('masuk');
             $table->string('perihal');
+            $table->boolean('usePassword')->delault(false);
+            $table->string('password')->delault(null);
             $table->string('file')->nullable();
             $table->timestamps();
         });
