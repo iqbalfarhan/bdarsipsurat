@@ -9,4 +9,8 @@
         font-family: 'Poppins', sans-serif;
         @apply font-medium
     }
+
+    table.table-truncate tr td{
+        @apply truncate
+    }
 }

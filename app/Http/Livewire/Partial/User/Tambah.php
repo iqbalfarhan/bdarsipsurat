@@ -6,6 +6,7 @@ use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class Tambah extends Component
 {
@@ -29,7 +30,8 @@ class Tambah extends Component
         $valid['password'] = Hash::make($this->password);
         $valid['units_id'] = $this->unit_id;
 
-        User::create($valid);
+        $user = User::create($valid);
+        $user->assignRole($this->role);
 
         $this->emit('reload');
         $this->reset();
@@ -37,7 +39,8 @@ class Tambah extends Component
     public function render()
     {
         return view('livewire.partial.user.tambah', [
-            'units' => Unit::get()->pluck('name', 'id')
+            'units' => Unit::get()->pluck('name', 'id'),
+            'roles' => Role::get()->pluck('name', 'id')
         ]);
     }
 }

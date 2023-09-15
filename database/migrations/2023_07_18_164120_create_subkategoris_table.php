@@ -10,9 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('sub_kategoris', function (Blueprint $table) {
+        Schema::create('subkategoris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kategoris_id')->constrained()->onDelete('cascade');
+            $table->foreignId('kategori_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->timestamps();
         });
@@ -23,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_kategoris');
+        Schema::dropIfExists('subkategoris');
     }
 };

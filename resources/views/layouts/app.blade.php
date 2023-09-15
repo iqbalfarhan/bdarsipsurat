@@ -16,7 +16,7 @@
     @auth
         <div class="drawer lg:drawer-open">
             <input id="drawer" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content bg-base-200 flex flex-col flex-1 min-h-screen">
+            <div class="drawer-content bg-base-200 flex flex-col flex-1 min-h-screen overflow-x-auto">
                 @livewire('component.navbar')
                 <div class="w-full max-w-7xl p-6 mx-auto">
                     {{ $slot }}
@@ -29,8 +29,8 @@
             </div>
         </div>
     @else
-        <div class="flex justify-center items-center h-screen bg-base-200">
-            <div class="card w-96 bg-base-100">
+        <div class="flex justify-center items-center h-screen bg-opacity-30" style="background-image: url('{{ Storage::url('bgbatikloop.png') }}')">
+            <div class="card w-96 bg-base-100 shadow-2xl">
                 <div class="card-body">
                     {{ $slot }}
                 </div>
@@ -40,6 +40,9 @@
 
 
     @livewireScripts
+    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+    <x-livewire-alert::flash />
+    <x-livewire-alert::scripts />
 </body>
 
 </html>

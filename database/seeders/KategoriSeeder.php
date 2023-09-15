@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Kategori;
-use App\Models\SubKategori;
+use App\Models\Subkategori;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -81,8 +81,8 @@ class KategoriSeeder extends Seeder
             ]);
 
             foreach ($subs as $sub) {
-                SubKategori::create([
-                    'kategoris_id' => $kat->id,
+                Subkategori::create([
+                    'kategori_id' => $kat->id,
                     'name' => $sub
                 ]);
             }

@@ -3,7 +3,7 @@
     <img src="{{ Storage::url('simpatik logo.png') }}" alt="" class="w-24 self-center">
     <div class="">
         <h3 class="text-lg font-bold">Login aplikasi</h3>
-        <span class="text-sm">Silakan masuk aplikasi menggunakan username dan password yang sudah terdaftar</span>
+        <span class="text-sm">Silakan masuk aplikasi menggunakan akun yang sudah terdaftar</span>
     </div>
 
     <div class="py-4 flex flex-col gap-2">

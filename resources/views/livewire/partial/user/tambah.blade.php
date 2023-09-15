@@ -1,6 +1,7 @@
 <div>
-    <label for="createUserModal" class="btn btn-primary btn-circle">
+    <label for="createUserModal" class="btn btn-neutral">
         @livewire('component.icon', ['name' => 'plus'])
+        Tambah user
     </label>
     <input type="checkbox" id="createUserModal" class="modal-toggle" wire:model="show" />
     <div class="modal">
@@ -15,8 +16,9 @@
                     placeholder="password">
                 <select wire:model="role" class="select bg-base-200 shadow w-full">
                     <option value="">pilih role</option>
-                    <option value="admin">Administartor</option>
-                    <option value="user">User</option>
+                    @foreach ($roles as $rl)
+                        <option value="{{ $rl }}">{{ $rl }}</option>
+                    @endforeach
                 </select>
                 <select wire:model="unit_id" class="select bg-base-200 shadow w-full">
                     <option value="">pilih unit</option>

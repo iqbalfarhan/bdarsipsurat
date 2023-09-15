@@ -16,6 +16,14 @@ class UserSeeder extends Seeder
     {
         $datas = [
             [
+                'name' => 'Super Administrator',
+                'username' => 'superadmin',
+                'password' => Hash::make('adminoke'),
+                'role' => 'superadmin',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'Administrator',
                 'username' => 'admin',
                 'password' => Hash::make('adminoke'),

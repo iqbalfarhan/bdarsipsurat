@@ -15,6 +15,6 @@ class Kategori extends Model
 
     public function subs()
     {
-        return $this->hasMany(SubKategori::class, 'kategoris_id', 'id');
+        return $this->hasMany(Subkategori::class);
     }
 }

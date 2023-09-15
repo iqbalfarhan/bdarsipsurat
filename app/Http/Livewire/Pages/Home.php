@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Pages;
 
 use App\Models\Kategori;
-use App\Models\SubKategori;
+use App\Models\Subkategori;
 use App\Models\Surat;
 use Livewire\Component;
 
@@ -40,11 +40,11 @@ class Home extends Component
     {
         return view('livewire.pages.home', [
             'kategories' => Kategori::get()->pluck('name', 'id'),
-            'subkategories' => SubKategori::when($this->kat, function ($q) {
-                return $q->where('kategoris_id', $this->kat);
+            'subkategories' => Subkategori::when($this->kat, function ($q) {
+                return $q->where('kategori_id', $this->kat);
             })->get()->pluck('name', 'id'),
             'surats' => Surat::when($this->sub, function ($q) {
-                return $q->where('sub_kategoris_id', $this->sub);
+                return $q->where('subkategori_id', $this->sub);
             })->get()->pluck('perihal', 'id'),
         ]);
     }

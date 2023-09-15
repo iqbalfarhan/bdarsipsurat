@@ -11,6 +11,7 @@ use App\Http\Livewire\Pages\Setting\Kategori;
 use App\Http\Livewire\Pages\Setting\Unit;
 use App\Http\Livewire\Pages\Setting\User;
 use App\Http\Livewire\Pages\Surat;
+use App\Http\Livewire\Setting\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +43,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/setting/kategori', Kategori::class)->name('setting.kategori');
     Route::get('/setting/unit', Unit::class)->name('setting.unit');
     Route::get('/setting/user', User::class)->name('setting.user');
+    Route::get('/setting/role', Role::class)->name('setting.role');
 });

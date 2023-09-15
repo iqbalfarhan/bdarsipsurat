@@ -1,9 +1,9 @@
-<div class="grid grid-cols-5 gap-6">
+<div class="flex flex-col gap-6">
     <div class="flex flex-col gap-4">
         <div class="card-title">
             filter data
         </div>
-        <div class="flex flex-col gap-1">
+        <div class="flex gap-3">
             <select wire:model="kat_id" class="select w-full select-sm">
                 <option value="">pilih kategori</option>
                 @foreach ($kategories as $katid => $kat)
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="col-span-4 flex flex-col gap-3">
+    <div class="flex flex-col gap-3">
 
         <div>Total data yang ditampilkan : {{ $datas->count() }}</div>
 
@@ -45,7 +45,7 @@
             <input type="text" class="input input-sm bg-base-100" wire:model="perihal"
                 placeholder="Pencarian dengan perihal">
             <div class="overflow-x-auto w-full overflow-hidden bg-base-100 rounded-lg">
-                <table class="table table-xs">
+                <table class="table table-truncate overflow-ellipsis">
                     <!-- head -->
                     <thead>
                         <tr>
@@ -62,10 +62,10 @@
                         @foreach ($datas as $data)
                             <tr>
                                 <th>{{ $data->id }}</th>
-                                <td>{{ Str::limit($data->subkategori->kategori->name, 30) }}</td>
-                                <td>{{ Str::limit($data->subkategori->name, 30) }}</td>
+                                <td>{{ $data->subkategori->kategori->name }}</td>
+                                <td>{{ $data->subkategori->name }}</td>
                                 <td>{{ $data->jenis }}</td>
-                                <td>{{ Str::limit($data->perihal, 30) }}</td>
+                                <td>{{ $data->perihal }}</td>
                                 <td>{{ $data->unit->name }}</td>
                                 <td>
                                     @if ($data->file)

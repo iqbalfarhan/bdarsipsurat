@@ -29,7 +29,7 @@
             </div>
             <div class="stat-value">86%</div>
             <div class="stat-title">{{ auth()->user()->name }}</div>
-            <div class="stat-desc">{{ auth()->user()->username }}</div>
+            <div class="stat-desc">{{ implode(', ', auth()->user()->getRoleNames()->toArray()) }}</div>
         </div>
     </div>
 </div>

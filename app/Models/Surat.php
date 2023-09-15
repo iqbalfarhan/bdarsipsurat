@@ -9,16 +9,19 @@ class Surat extends Model
 {
     use HasFactory;
     public $fillable = [
-        'sub_kategoris_id',
+        'subkategori_id',
         'unit_id',
+        'user_id',
         'jenis',
         'perihal',
+        'usePassword',
+        'password',
         'file',
     ];
 
     public function subkategori()
     {
-        return $this->belongsTo(SubKategori::class, 'sub_kategoris_id', 'id');
+        return $this->belongsTo(SubKategori::class);
     }
 
     public function unit()
