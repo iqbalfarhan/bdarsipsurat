@@ -31,24 +31,30 @@
                 </a>
             </li>
             @endcan
+            @can('kategori.index')
             <li>
                 <a href="{{ route('setting.kategori') }}" class="{{ Route::is('setting.kategori') ? 'active' : '' }}">
-                    @livewire('component.icon', ['name' => 'lists'])
+                    @livewire('component.icon', ['name' => 'tag'])
                     Kategori & sub kategori
                 </a>
             </li>
+            @endcan
+            @can('unit.index')
             <li>
                 <a href="{{ route('setting.unit') }}" class="{{ Route::is('setting.unit') ? 'active' : '' }}">
                     @livewire('component.icon', ['name' => 'building'])
                     Unit departments
                 </a>
             </li>
+            @endcan
+            @can('permission.index')
             <li>
                 <a href="{{ route('setting.role') }}" class="{{ Route::is('setting.role') ? 'active' : '' }}">
                     @livewire('component.icon', ['name' => 'key'])
                     Role & permission
                 </a>
             </li>
+            @endcan
         </ul>
     </li>
 

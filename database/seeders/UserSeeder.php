@@ -51,5 +51,9 @@ class UserSeeder extends Seeder
             ]);
             $user->assignRole($data['role']);
         }
+
+        User::factory(10)->create()->each(function ($user) {
+            $user->assignRole('user');
+        });
     }
 }

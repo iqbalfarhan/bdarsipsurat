@@ -21,7 +21,7 @@ class Surat extends Model
 
     public function subkategori()
     {
-        return $this->belongsTo(SubKategori::class);
+        return $this->belongsTo(Subkategori::class);
     }
 
     public function unit()

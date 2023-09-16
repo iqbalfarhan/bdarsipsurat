@@ -16,7 +16,7 @@ class Subkategori extends Model
 
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class, 'kategoris_id', 'id');
+        return $this->belongsTo(Kategori::class);
     }
 
     public function surats()

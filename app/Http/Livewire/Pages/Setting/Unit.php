@@ -8,6 +8,7 @@ use Livewire\Component;
 class Unit extends Component
 {
     public $newunit;
+    public $showModal = false;
     public $editMode = false;
     public $selected;
 
@@ -36,6 +37,15 @@ class Unit extends Component
         $this->editMode = true;
         $this->selected = $unit->id;
         $this->newunit = $unit->name;
+
+        $this->showModal = true;
+    }
+
+    public function tambahunit(){
+        $this->reset([
+            'selected'
+        ]);
+        $this->showModal = true;
     }
 
     public function simpan()
@@ -54,7 +64,7 @@ class Unit extends Component
     public function render()
     {
         return view('livewire.pages.setting.unit', [
-            'datas' => ModelsUnit::get()->pluck('name', 'id')
+            'datas' => ModelsUnit::withCount(['surats', 'users'])->get()
         ]);
     }
 }

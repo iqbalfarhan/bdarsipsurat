@@ -18,13 +18,24 @@ class Role extends Component
         'reload' => '$refresh'
     ];
 
+    public function assignRole(Permission $permission, $role){
+
+        if ($permission->hasRole($role)) {
+            $permission->removeRole($role);
+        }
+        else{
+            $permission->assignRole($role);
+        }
+    }
+
     public function deleteRole(ModelsRole $role){
         $role->delete();
+        $this->alert('success', "Role deleted successfully");
     }
 
     public function deletePermission(Permission $permission){
         $permission->delete();
-        $this->alert('success', 'permission deleted successfully');
+        $this->alert('success', "Permission deleted successfully");
     }
     
     public function render()
@@ -33,7 +44,7 @@ class Role extends Component
             'roles' => ModelsRole::whereNot('name', 'superadmin')->get()->pluck('name', 'id'),
             'permissions' => Permission::when($this->cari, function($q){
                 $q->where('name', 'like', '%'.$this->cari.'%');
-            })->get()->pluck('name', 'id'),
+            })->get(),
         ]);
     }
 }

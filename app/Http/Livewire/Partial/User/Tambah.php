@@ -28,7 +28,7 @@ class Tambah extends Component
         ]);
 
         $valid['password'] = Hash::make($this->password);
-        $valid['units_id'] = $this->unit_id;
+        $valid['unit_id'] = $this->unit_id;
 
         $user = User::create($valid);
         $user->assignRole($this->role);
