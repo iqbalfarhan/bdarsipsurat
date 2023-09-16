@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Image;
+use Intervention\Image\Facades\Image;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
