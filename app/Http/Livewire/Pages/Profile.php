@@ -72,6 +72,8 @@ class Profile extends Component
 
             Image::make($this->gambar)->fit(300);
         }
+
+        $this->user = User::find($this->user->id);
     }
     
     public function render()

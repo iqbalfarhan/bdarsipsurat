@@ -6,7 +6,7 @@
         </button>
     </div>
 
-    <div class="overflow-x-auto bg-base-100 shadow">
+    <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
         <table class="table">
             <thead>
                 <th>No</th>

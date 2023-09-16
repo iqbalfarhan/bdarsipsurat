@@ -103,12 +103,15 @@
                 </form>
             </div>
 
-            <div class="flex justify-between">
-                <div></div>
-                <button class="btn btn-neutral" wire:click.prevent='simpan'>
-                    @livewire('component.icon', ['name' => 'check'])
-                    <span>simpan</span>
-                </button>
+            <div class="card bg-base-100">
+                <div class="card-body">
+                    <div class="card-actions">
+                        <button class="btn btn-neutral" wire:click.prevent='simpan'>
+                            @livewire('component.icon', ['name' => 'check'])
+                            <span>simpan</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

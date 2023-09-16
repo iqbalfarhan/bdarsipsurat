@@ -1,14 +1,15 @@
 <div class="flex flex-col gap-6">
     <div class="flex justify-between">
-        <input type="text" placeholder="Cari permission" wire:model='cari' class="input input-shadow">
+        <input type="text" placeholder="Cari permission" wire:model='cari' class="input shadow">
         <label class="btn btn-neutral" for="createRoleModal">
             @livewire('component.icon', ['name' => 'plus'])
             add permission
         </label>
     </div>
-    <div class="overflow-x-auto bg-base-100">
+    <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
         <table class="table">
-            <thead class="bg-base-300">
+            <thead>
+                <th>No</th>
                 <th>Permissions</th>
                 @foreach ($roles as $rlid => $rl)
                 <th class="capitalize">{{ $rl }}</th>
@@ -16,8 +17,9 @@
                 <th>Action</th>
             </thead>
             <tbody>
-                @foreach ($permissions as $permit)
+                @foreach ($permissions as $key => $permit)
                 <tr>
+                    <td>{{ $key+1 }}</td>
                     <td>{{ $permit->name }}</td>
                     @foreach ($roles as $rlid => $rl)
                     <td>
@@ -30,6 +32,7 @@
                 </tr>
                 @endforeach
                 <tr>
+                    <td></td>
                     <td></td>
                     @foreach ($roles as $rlid => $rl)
                     <td>
