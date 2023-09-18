@@ -13,4 +13,16 @@
     table.table-truncate tr td{
         @apply truncate
     }
+
+    .fc6 {
+        @apply flex flex-col gap-6
+    }
+
+    .fc4 {
+        @apply flex flex-col gap-4
+    }
+
+    .input {
+        @apply shadow
+    }
 }

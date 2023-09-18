@@ -18,7 +18,7 @@
         <input id="drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content bg-base-200 flex flex-col flex-1 min-h-screen overflow-x-auto">
             @livewire('component.navbar')
-            <div class="w-full max-w-7xl p-6 mx-auto">
+            <div class="w-full max-w-7xl p-6 mx-auto overflow-x-auto">
                 {{ $slot }}
             </div>
             @livewire('component.logout')

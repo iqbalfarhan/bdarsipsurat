@@ -14,7 +14,7 @@ class Surat extends Model
         'user_id',
         'jenis',
         'perihal',
-        'usePassword',
+        'use_password',
         'password',
         'file',
     ];

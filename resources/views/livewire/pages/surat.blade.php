@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6">
 
     <div class="flex justify-between">
-        <input type="text" class="input bg-base-100" wire:model="perihal" placeholder="Pencarian dengan perihal">
+        <input type="text" class="input bg-base-100" wire:model="perihal" placeholder="Pencarian cepat">
         <button class="btn btn-primary" wire:click="$set('showFilter', {{ !$showFilter }})">Filter surat</button>
     </div>
 
@@ -70,7 +70,7 @@
                 @foreach ($datas as $data)
                     <tr>
                         <th>{{ $data->id }}</th>
-                        <td class="whitespace-pre-line">{{ $data->unit->name ?? "" }}</td>
+                        <td>{{ Str::limit($data->unit->name ?? "", 20) }}</td>
                         <td>
                             <div class="flex flex-col">
                                 <span>{{ Str::limit($data->subkategori->kategori->name ?? "", 20) }}</span>
