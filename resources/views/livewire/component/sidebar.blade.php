@@ -20,6 +20,7 @@
         </ul>
     </li>
 
+    @can('pengaturan.menu')
     <li>
         <h2 class="menu-title">Pengaturan</h2>
         <ul>
@@ -57,6 +58,7 @@
             @endcan
         </ul>
     </li>
+    @endcan
 
     <li>
         <h2 class="menu-title">Pengaturan akun</h2>

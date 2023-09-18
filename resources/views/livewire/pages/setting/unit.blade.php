@@ -4,10 +4,12 @@
             "title" => "Pengatuan unit departement",
             "subtitle" => "Atur data unit atau departement",
         ])
+        @can('unit.create')
         <button for="modalaction" class="btn btn-neutral" wire:click.prevent='tambahunit'>
             @livewire('component.icon', ['name' => 'plus'])
             Tambah unit
         </button>
+        @endcan
     </div>
 
     <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
@@ -27,8 +29,12 @@
                     <td>{{ $data->surats_count }}</td>
                     <td>{{ $data->users_count }}</td>
                     <td>
+                        @can('unit.edit')
                         <a wire:click.prevent="selectUnit({{ $data->id }})" class="btn btn-xs btn-success">Edit</a>
+                        @endcan
+                        @can('unit.delete')
                         <a wire:click.prevent="selectUnit({{ $data->id }})" class="btn btn-xs btn-error">delete</a>
+                        @endcan
                     </td>
                 </tr>
                 @endforeach

@@ -12,7 +12,7 @@
                         <option value="admin">Administrator</option>
                         <option value="user">user</option>
                     </select>
-                    <select wire:model="units_id" class="select bg-base-200 shadow">
+                    <select wire:model="unit_id" class="select bg-base-200 shadow">
                         <option value="">Pilih unit</option>
                         @foreach ($units as $unitid => $unit)
                             <option value="{{ $unitid }}">{{ $unit }}</option>

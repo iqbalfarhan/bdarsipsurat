@@ -23,6 +23,7 @@ class Surat extends Component
     
     public $showFilter = false;
     public $perpage = 25;
+    public $allowedUnitId = [];
     public $kat_id;
     public $subkat_id;
     public $jenis;
@@ -63,10 +64,16 @@ class Surat extends Component
         return Storage::download($surat->file, $filename);
     }
     
-    public function mount() {
-        
-        $this->unit_id = auth()->user()->unit_id;
-        
+    public function mount()
+    {    
+        $this->unit_id = auth()->user()->unit_id;   
+
+        if (auth()->user()->hasRole(['admin', 'superadmin'])) {
+            $this->allowedUnitId = Unit::get()->pluck('id');
+        }
+        else{
+            $this->allowedUnitId[] = auth()->user()->unit_id;
+        }
     }
     
     public function render()
@@ -82,12 +89,12 @@ class Surat extends Component
             return $q->whereIn('subkategori_id', $subkat_ids);
         })->when($this->subkat_id, function ($q) {
             return $q->where('subkategori_id', $this->subkat_id);
-        })->paginate($this->perpage);
+        })->whereIn('unit_id', $this->allowedUnitId)->paginate($this->perpage);
         
         return view('livewire.pages.surat', [
             'datas' => $datas,
             'kategories' => Kategori::get()->pluck('name', 'id'),
-            'units' => Unit::get()->pluck('name', 'id'),
+            'units' => Unit::whereIn('id', $this->allowedUnitId)->get()->pluck('name', 'id'),
             'subkategories' => Subkategori::when($this->kat_id, function ($q) {
                 return $q->where('kategori_id', $this->kat_id);
             })->get()->pluck('name', 'id'),

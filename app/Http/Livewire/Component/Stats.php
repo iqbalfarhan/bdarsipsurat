@@ -8,6 +8,8 @@ class Stats extends Component
 {
     public function render()
     {
-        return view('livewire.component.stats');
+        return view('livewire.component.stats', [
+            'user' => auth()->user()
+        ]);
     }
 }

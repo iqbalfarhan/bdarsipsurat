@@ -20,7 +20,7 @@ class Edit extends Component
     public $name;
     public $username;
     public $role;
-    public $units_id;
+    public $unit_id;
 
 
     public function loadEdit(User $user)
@@ -31,7 +31,7 @@ class Edit extends Component
         $this->name = $user->name;
         $this->username = $user->username;
         $this->role = $user->role;
-        $this->units_id = $user->units_id;
+        $this->unit_id = $user->unit_id;
         $this->show = true;
     }
 
@@ -41,7 +41,7 @@ class Edit extends Component
             'name' => 'required',
             'username' => 'required',
             'role' => 'required',
-            'units_id' => 'required',
+            'unit_id' => 'required',
         ]);
 
         $this->data->update($valid);

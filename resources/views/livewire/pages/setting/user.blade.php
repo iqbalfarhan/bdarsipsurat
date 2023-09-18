@@ -1,7 +1,15 @@
-<div class="flex flex-col gap-6">
-    <div class="flex justify-between gap-6">
+<div class="fc6">
+    <div class="flex justify-between">
+        @livewire('partial.header', [
+            "title" => "Pengaturan data user",
+            "subtitle" => "Menambahkan, mengubah dan menhapus data user",
+        ])
         @livewire('partial.user.tambah')
-        <input type="search" class="input bg-base-100 shadow" placeholder="Cari user dengan nama, username, unit atau role user">
+    </div>
+    <div class="flex">
+        <div>
+            <input type="search" class="input bg-base-100 shadow" placeholder="Cari user dengan nama, username, unit atau role user">
+        </div>
     </div>
     <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
         <table class="table">
@@ -33,17 +41,21 @@
                     <td>{{ implode(', ', $data->getRoleNames()->toArray()) }}</td>
                     <td>{{ $data->unit->name ?? '' }}</td>
                     <td>
+                        @can('user.edit')
                         <button class="btn btn-xs btn-success" wire:click.prevent="$emit('showEdit', {{ $data->id }})">
                             edit
                         </button>
-                        
                         <button class="btn btn-xs btn-neutral" wire:click.prevent="$emit('resetuserpass', {{ $data->id }})">
                             reset
                         </button>
-                        
+                        @endcan
+
+                        @can('user.delete')    
                         <button class="btn btn-xs btn-error" wire:click.prevent="deleteUser('{{ $data->id }}')">
                             delete
                         </button>
+                        @endcan
+                        
                     </td>
                 </tr>
                 @endforeach

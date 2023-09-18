@@ -1,4 +1,10 @@
-<div class="flex flex-col gap-6">
+<div class="fc6">
+    <div>
+        @livewire('partial.header', [
+            "title" => "Edit profile",
+            "subtitle" => "Ubah informasi login, update password dan photo",
+        ])
+    </div>
     <div class="card bg-base-100 w-full">
         <div class="card-body">
             <div class="flex flex-col lg:flex-row gap-6 items-center">
@@ -31,7 +37,7 @@
             </ul>
         </div>
         
-        <div class="lg:col-span-3 flex flex-col gap-6">
+        <div class="lg:col-span-3 fc6">
             <div class="card bg-base-100 w-full">
                 <form class="card-body" wire:submit.prevent="simpan">
                     @if ($halaman == "login")
@@ -55,7 +61,7 @@
                         <input type="text" wire:model="username" class="input bg-base-200 shadow" placeholder="username">
                     </div>
                     @elseif ($halaman == "photo")
-                    <div class="flex flex-col gap-6">
+                    <div class="fc6">
                         @if ($gambar)
                         <div class="avatar">
                             <div class="w-24 rounded-full">

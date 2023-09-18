@@ -5,7 +5,15 @@
             "title" => "Semua surat",
             "subtitle" => "tampilkan semua surat yang tersedia",
         ])
-        <button class="btn btn-primary" wire:click="$set('showFilter', {{ !$showFilter }})">Filter surat</button>
+        <div class="flex gap-2">
+            <a href="{{ route('createsurat') }}" class="btn btn-neutral">
+                @livewire('component.icon', ['name' => 'plus'])
+                <span>Tambah surat</span>
+            </a>
+            <button class="btn btn-primary" wire:click="$set('showFilter', {{ !$showFilter }})">
+                @livewire('component.icon', ['name' => 'filter'])
+            </button>
+        </div>
     </div>
 
     <div class="flex justify-between">

@@ -21,15 +21,15 @@
     <div class="stats shadow">
         <div class="stat">
             <div class="stat-figure">
-                <div class="avatar online">
+                <div class="avatar">
                     <div class="w-16 rounded-full">
-                        <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        <img src="{{ $user->gambar }}" />
                     </div>
                 </div>
             </div>
-            <div class="stat-value">86%</div>
-            <div class="stat-title">{{ auth()->user()->name }}</div>
-            <div class="stat-desc">{{ implode(', ', auth()->user()->getRoleNames()->toArray()) }}</div>
+            <div class="stat-value">{{ date('H:i') }}</div>
+            <div class="stat-title">{{ $user->name }}</div>
+            <div class="stat-desc">{{ implode(', ', $user->getRoleNames()->toArray()) }} {{ $user->unit->name ?? "" }}</div>
         </div>
     </div>
 </div>

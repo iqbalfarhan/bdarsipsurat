@@ -4,10 +4,13 @@ namespace App\Http\Livewire\Partial\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Resetpass extends Component
 {
+    use LivewireAlert;
+    
     public $show = false;
     public $user;
 
@@ -28,6 +31,8 @@ class Resetpass extends Component
         ]);
 
         $this->reset();
+
+        $this->alert('success', 'Berhasil mereset password user');
     }
     public function render()
     {
