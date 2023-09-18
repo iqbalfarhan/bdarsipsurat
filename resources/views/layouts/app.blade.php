@@ -29,7 +29,7 @@
         </div>
     </div>
     @else
-    <div class="flex justify-center items-center h-screen" style="background-image: url('{{ url('images/bgbatikloop.png') }}')">
+    <div class="flex justify-center items-center h-screen" style="background-image: url('{{ Storage::url('bgbatikloop.png') }}')">
         <div class="card w-96 bg-base-100 shadow-2xl">
             <div class="card-body">
                 {{ $slot }}

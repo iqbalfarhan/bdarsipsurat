@@ -1,16 +1,16 @@
 <div class="flex flex-col gap-6">
     <div class="card bg-base-100 w-full">
         <div class="card-body">
-            <div class="flex flex-col lg:flex-row gap-6">
+            <div class="flex flex-col lg:flex-row gap-6 items-center">
                 <div class="avatar">
-                    <div class="w-24 rounded-full">
+                    <div class="w-20 rounded-full">
                         <img src="{{ $user->gambar }}" />
                     </div>
                 </div>
                 
                 <div>
                     <h2 class="card-title">{{ $user->name }}</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos itaque reprehenderit ipsum doloribus architecto vel quis nulla dolore et. Cupiditate animi aliquid accusamus magnam omnis dignissimos a minima consequatur optio?</p>
+                    <p>Sebagai {{ implode(', ', $user->getRoleNames()->toArray()) }}</p>
                 </div>
             </div>
             

@@ -2,7 +2,7 @@
     <div>
         <button for="modalaction" class="btn btn-neutral" wire:click.prevent='tambahunit'>
             @livewire('component.icon', ['name' => 'plus'])
-            Open modal
+            Tambah unit
         </button>
     </div>
 
@@ -33,7 +33,7 @@
 
     <input type="checkbox" id="modalaction" class="modal-toggle" wire:model='showModal' />
     <div class="modal">
-        <div class="modal-box">
+        <div class="modal-box space-y-4">
             <h3 class="font-bold text-lg">{{ $editMode ? 'Edit nama unit' : 'Tulis nama unit baru' }}</h3>
             @if ($editMode)
             <form class="card-actions" wire:submit.prevent="perbarui">
