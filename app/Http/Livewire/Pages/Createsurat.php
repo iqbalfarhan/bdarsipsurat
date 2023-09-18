@@ -56,6 +56,18 @@ class Createsurat extends Component
         $this->reset();
     }
 
+    public function resetForm(){
+        $this->reset([
+            'subkategori_id',
+            'jenis',
+            "perihal",
+            "file",
+            "use_password",
+            "password",
+            "unit_id",
+        ]);
+    }
+
     public function render()
     {
         return view('livewire.pages.createsurat', [

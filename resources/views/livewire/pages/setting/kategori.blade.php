@@ -1,36 +1,44 @@
-<div class="flex flex-col gap-6">
-    <div class="flex">
-        @livewire('partial.kategori.create', ['datas' => $datas])
+<div class="fc6">
+    <div class="flex justify-between">
+        @livewire('partial.header', [
+            "title" => "Pengatuan kategori",
+            "subtitle" => "Atur data kategori dan subkategori",
+        ])
+        <div class="flex gap-2">
+            @livewire('partial.kategori.create', ['datas' => $datas])
+            <button class="btn btn-primary">
+                @livewire('component.icon', ['name' => 'filter'])
+            </button>
+        </div>
     </div>
-    <div class="card card-compact bg-base-100 w-full">
-        <div class="card-body">
-            <div class="flex justify-between items-center">
-                <div class="form-control">
-                    <label class="label cursor-pointer flex gap-2">
-                        <input type="checkbox" checked="checked" class="checkbox checkbox-sm" wire:model="showsub" />
-                        <span class="label-text">Tampilkan subkategori</span>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="divider m-0 p-0"></div>
-        <div class="card-body">
-            <ul class="menu">
-                @foreach ($datas as $data)
-                    <li>
-                        <details {{ $showsub ? 'open' : '' }}>
-                            <summary>
-                                {{ $data->id }}. {{ $data->name }} - <small>{{ $data->subs_count }} sub</small>
-                            </summary>
-                            <ul>
-                                @foreach ($data->subs as $key => $sub)
-                                    <li><a>- {{ $sub->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </details>
-                    </li>
+    <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
+        <table class="table whitespace-nowrap">
+            <thead>
+                <th>No</th>
+                <th>Kategori</th>
+                <th>Sub kategori</th>
+                <th>Jumlah surat</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                @foreach ($datas as $number => $data)
+                    @foreach ($data->subs as $key => $sub)
+                    <tr>
+                        @if ($key === 0)
+                            <td rowspan="{{ $data->subs_count }}">{{ $number+1 }}</td>
+                            <td rowspan="{{ $data->subs_count }}">{{ $data->name }}</td>
+                        @endif
+                        <td>- {{ $sub->name }}</td>
+                        <td>{{ $sub->surats->count() }}</td>
+                        <td>
+                            <button class="btn btn-xs">detail</button>
+                            <button class="btn btn-xs btn-success">edit</button>
+                            <button class="btn btn-xs btn-error">delete</button>
+                        </td>
+                    </tr>
+                    @endforeach
                 @endforeach
-            </ul>
-        </div>
+            </tbody>
+        </table>
     </div>
 </div>

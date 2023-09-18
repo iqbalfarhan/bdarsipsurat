@@ -22,7 +22,7 @@
         @apply flex flex-col gap-4
     }
 
-    .input {
+    .input, .select {
         @apply shadow
     }
 }

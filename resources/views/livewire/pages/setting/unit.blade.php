@@ -1,5 +1,9 @@
 <div class="flex flex-col gap-6">
-    <div>
+    <div class="flex justify-between">
+        @livewire('partial.header', [
+            "title" => "Pengatuan unit departement",
+            "subtitle" => "Atur data unit atau departement",
+        ])
         <button for="modalaction" class="btn btn-neutral" wire:click.prevent='tambahunit'>
             @livewire('component.icon', ['name' => 'plus'])
             Tambah unit
@@ -23,7 +27,8 @@
                     <td>{{ $data->surats_count }}</td>
                     <td>{{ $data->users_count }}</td>
                     <td>
-                        <a wire:click.prevent="selectUnit({{ $data->id }})" class="btn btn-xs btn-primary">Edit</a>
+                        <a wire:click.prevent="selectUnit({{ $data->id }})" class="btn btn-xs btn-success">Edit</a>
+                        <a wire:click.prevent="selectUnit({{ $data->id }})" class="btn btn-xs btn-error">delete</a>
                     </td>
                 </tr>
                 @endforeach

@@ -17,7 +17,7 @@ class Kategori extends Component
     public function render()
     {
         return view('livewire.pages.setting.kategori', [
-            'datas' => ModelsKategori::withCount('subs')->get()
+            'datas' => ModelsKategori::with('subs')->withCount('subs')->get()
         ]);
     }
 }

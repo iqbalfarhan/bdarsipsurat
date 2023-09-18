@@ -8,21 +8,27 @@ use App\Models\Surat as ModelsSurat;
 use App\Models\Unit;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Surat extends Component
 {
-
+    
+    use WithPagination;
+    
+    protected $paginationTheme = 'tailwind';
+    
     protected $listeners = [
         'reload' => '$refresh'
     ];
-
+    
     public $showFilter = false;
+    public $perpage = 25;
     public $kat_id;
     public $subkat_id;
     public $jenis;
     public $perihal;
     public $unit_id;
-
+    
     public function updatedKatId()
     {
         $this->reset([
@@ -30,11 +36,21 @@ class Surat extends Component
         ]);
     }
 
+    public function updating(){
+        $this->resetPage();
+    }
+    
     function resetFilter()
     {
-        $this->reset();
+        $this->reset([
+            'kat_id',
+            'subkat_id',
+            'jenis',
+            'perihal',
+            'unit_id'
+        ]);
     }
-
+    
     public function download(ModelsSurat $surat)
     {
         $filename = implode(" - ", [
@@ -46,13 +62,13 @@ class Surat extends Component
         ]);
         return Storage::download($surat->file, $filename);
     }
-
+    
     public function mount() {
-
+        
         $this->unit_id = auth()->user()->unit_id;
         
     }
-
+    
     public function render()
     {
         $datas = ModelsSurat::when($this->unit_id, function ($q) {
@@ -66,8 +82,8 @@ class Surat extends Component
             return $q->whereIn('subkategori_id', $subkat_ids);
         })->when($this->subkat_id, function ($q) {
             return $q->where('subkategori_id', $this->subkat_id);
-        })->get();
-
+        })->paginate($this->perpage);
+        
         return view('livewire.pages.surat', [
             'datas' => $datas,
             'kategories' => Kategori::get()->pluck('name', 'id'),

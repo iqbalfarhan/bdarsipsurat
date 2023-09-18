@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Partial\Kategori;
 
 use App\Models\Kategori;
-use App\Models\SubKategori;
+use App\Models\Subkategori;
 use Livewire\Component;
 
 class Create extends Component
@@ -33,8 +33,8 @@ class Create extends Component
             $valid['selectkat'] = $newkat->id;
         }
 
-        SubKategori::create([
-            'kategoris_id' => $valid['selectkat'],
+        Subkategori::create([
+            'kategori_id' => $valid['selectkat'],
             'name' => $valid['subkategori'],
         ]);
 

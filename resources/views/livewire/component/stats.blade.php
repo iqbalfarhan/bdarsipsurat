@@ -1,5 +1,5 @@
 <div class="grid lg:grid-cols-3 gap-6">
-    <div class="stats">
+    <div class="stats shadow">
         <div class="stat">
             <div class="stat-figure">
                 @livewire('component.icon', ['name' => 'lists', 'class' => 'h-8 w-8'], key(uniqid()))
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="stats">
+    <div class="stats shadow">
         <div class="stat">
             <div class="stat-title">Jumlah surat</div>
             <div class="stat-value">{{ \App\Models\Surat::count() }}</div>
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="stats">
+    <div class="stats shadow">
         <div class="stat">
             <div class="stat-figure">
                 <div class="avatar online">

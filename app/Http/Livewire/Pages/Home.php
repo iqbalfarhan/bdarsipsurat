@@ -28,7 +28,9 @@ class Home extends Component
     public function setkat($katid, $katname)
     {
         $this->kat = $katid;
-        $this->katlabel = $katname;
+        $this->reset([
+            'sub'
+        ]);
     }
     public function setsub($subid, $subname)
     {

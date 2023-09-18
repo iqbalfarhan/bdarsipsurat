@@ -1,7 +1,7 @@
 <form class="fc6" wire:submit.prevent="simpan">
     @livewire('partial.header', [
-        'title' => 'Buat surat',
-        'subtitle' => 'buat surat',
+        'title' => 'Tambah surat',
+        'subtitle' => 'input surat baru',
     ])
     <div class="grid lg:grid-cols-2 gap-6">
         <div class="card bg-base-100 shadow w-full">
@@ -102,7 +102,7 @@
         <div class="card-body">
             <div class="card-actions justify-between">
                 <button class="btn btn-neutral">simpan</button>
-                <button class="btn btn-ghost">Batal</button>
+                <button type="button" wire:click.prevent="resetForm" class="btn btn-ghost">Batal</button>
             </div>
         </div>
     </div>
