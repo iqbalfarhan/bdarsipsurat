@@ -1,5 +1,5 @@
 <div class="fc6">
-    <div class="flex justify-between">
+    <div class="flex justify-between gap-4">
         @livewire('partial.header', [
             "title" => "Pengatuan kategori",
             "subtitle" => "Atur data kategori dan subkategori",

@@ -9,14 +9,14 @@
             @if ($canAccess)
             <button class="btn btn-success">
                 @livewire('component.icon', ['name' => 'download'])
-                <span>Download</span>
+                <span class="hidden lg:block">Download</span>
             </button>
             @endif
         </div>
     </div>
     @if ($canAccess)
-    <div class="grid grid-cols-3 gap-6 min-h-16">
-        <div class="col-span-2 fc4">
+    <div class="grid lg:grid-cols-3 gap-6 min-h-16">
+        <div class="lg:col-span-2 fc4">
             <div class="card bg-base-100 shadow">
                 <div class="card-body">
                     @if ($data->file)

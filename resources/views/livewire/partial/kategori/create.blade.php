@@ -1,7 +1,9 @@
 <div>
-    <label for="my_modal_6" class="btn btn-neutral">@livewire('component.icon', ['name' => 'plus'])tambah sub kategori</label>
+    <label for="my_modal_6" class="btn btn-neutral">
+        @livewire('component.icon', ['name' => 'plus'])
+        <span class="hidden lg:block">tambah sub kategori</span>
+    </label>
 
-    <!-- Put this part before </body> tag -->
     <input type="checkbox" id="my_modal_6" class="modal-toggle" wire:model="show" />
     <div class="modal">
         <form class="modal-box" wire:submit.prevent="simpan">

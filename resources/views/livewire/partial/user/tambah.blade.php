@@ -1,7 +1,7 @@
 <div>
     <label for="createUserModal" class="btn btn-neutral">
         @livewire('component.icon', ['name' => 'plus'])
-        Tambah user
+        <span class="hidden lg:block">Tambah user</span>
     </label>
     <input type="checkbox" id="createUserModal" class="modal-toggle" wire:model="show" />
     <div class="modal">

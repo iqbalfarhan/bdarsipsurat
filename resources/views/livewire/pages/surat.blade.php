@@ -9,7 +9,7 @@
             @can('surat.create')
             <a href="{{ route('createsurat') }}" class="btn btn-neutral">
                 @livewire('component.icon', ['name' => 'plus'])
-                <span>Tambah surat</span>
+                <span class="hidden lg:block">Tambah surat</span>
             </a>
             @endcan
             <button class="btn btn-primary" wire:click="$set('showFilter', {{ !$showFilter }})">
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="flex justify-between">
+    <div class="flex flex-col lg:flex-row justify-between gap-2">
         <input type="text" class="input bg-base-100" wire:model="perihal" placeholder="Pencarian cepat">
         <select class="select bg-base-100" wire:model='perpage'>
             <option value="10">10</option>
@@ -33,7 +33,7 @@
             {{ $datas->links() }}
         </div>
         @endif
-        <table class="table">
+        <table class="table whitespace-nowrap">
             <thead class="bg-base-300">
                 <tr>
                     <th></th>

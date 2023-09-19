@@ -1,5 +1,5 @@
 <div class="fc6">
-    <div class="flex justify-between">
+    <div class="flex justify-between gap-6">
         @livewire('partial.header', [
             "title" => "Pengaturan data user",
             "subtitle" => "Menambahkan, mengubah dan menhapus data user",
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
-        <table class="table">
+        <table class="table whitespace-nowrap">
             <thead>
                 <tr>
                     <th></th>

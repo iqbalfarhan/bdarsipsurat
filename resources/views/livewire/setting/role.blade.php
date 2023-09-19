@@ -6,7 +6,7 @@
         ])
         <label class="btn btn-neutral" for="createRoleModal">
             @livewire('component.icon', ['name' => 'plus'])
-            add permission
+            <span class="hidden lg:block">Add permission</span>
         </label>
     </div>
     <div class="flex justify-between">

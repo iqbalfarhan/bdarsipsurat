@@ -7,13 +7,13 @@
         @can('unit.create')
         <button for="modalaction" class="btn btn-neutral" wire:click.prevent='tambahunit'>
             @livewire('component.icon', ['name' => 'plus'])
-            Tambah unit
+            <span class="hidden lg:block">Tambah unit</span>
         </button>
         @endcan
     </div>
 
     <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
-        <table class="table">
+        <table class="table whitespace-nowrap">
             <thead>
                 <th>No</th>
                 <th>Nama unit</th>
