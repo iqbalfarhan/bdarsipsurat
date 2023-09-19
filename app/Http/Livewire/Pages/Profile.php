@@ -75,7 +75,9 @@ class Profile extends Component
             $image = $this->gambar->hashName('user');
             $makeimage = Image::make($this->gambar)->fit(300)->encode('jpg', 80);
             if (Storage::put($image, $makeimage)) {
-                Storage::delete($user->photo);
+                if ($user->photo) {
+                    Storage::delete($user->photo);
+                }
             }
 
             User::find($user->id)->update([
