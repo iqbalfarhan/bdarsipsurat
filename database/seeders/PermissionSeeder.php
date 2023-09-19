@@ -43,10 +43,16 @@ class PermissionSeeder extends Seeder
             'subkategori.show',
             'subkategori.edit',
             'subkategori.delete',
+
+            'pengaturan.menu'
         ];
 
         foreach ($datas as $permission) {
-            Permission::create(['name' => $permission]);
+            $permit = Permission::create(['name' => $permission]);
+
+            if ($permit) {
+                $permit->assignRole('admin');
+            }
         }
     }
 }

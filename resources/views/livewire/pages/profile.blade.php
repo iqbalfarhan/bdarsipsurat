@@ -1,8 +1,8 @@
 <div class="fc6">
     <div>
         @livewire('partial.header', [
-            "title" => "Edit profile",
-            "subtitle" => "Ubah informasi login, update password dan photo",
+        "title" => "Edit profile",
+        "subtitle" => "Ubah informasi login, update password dan photo",
         ])
     </div>
     <div class="card bg-base-100 w-full">
@@ -62,13 +62,15 @@
                     </div>
                     @elseif ($halaman == "photo")
                     <div class="fc6">
-                        @if ($gambar)
                         <div class="avatar">
                             <div class="w-24 rounded-full">
-                              <img src="{{ $gambar->temporaryUrl() }}" />
+                                @if ($gambar)
+                                <img src="{{ $gambar->temporaryUrl() }}" />
+                                @else
+                                <img src="{{ $user->gambar }}">
+                                @endif
                             </div>
-                          </div>
-                        @endif
+                        </div>
                         <input type="file" class="file-input bg-base-200" wire:model='gambar'>
                     </div>
                     @elseif ($halaman == "password")
@@ -108,7 +110,7 @@
                     @endif
                 </form>
             </div>
-
+            
             <div class="card bg-base-100">
                 <div class="card-body">
                     <div class="card-actions">

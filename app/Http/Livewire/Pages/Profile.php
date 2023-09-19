@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Pages;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -66,11 +67,20 @@ class Profile extends Component
             User::find($user->id)->update($valid);
         }
         elseif ($this->halaman == "photo") {
+            $user = $this->user;
             $this->validate([
-                'image' => 'required|image',
+                'gambar' => 'required|image',
             ]);
 
-            Image::make($this->gambar)->fit(300);
+            $image = $this->gambar->hashName('user');
+            $makeimage = Image::make($this->gambar)->fit(300)->encode('jpg', 80);
+            if (Storage::put($image, $makeimage)) {
+                Storage::delete($user->photo);
+            }
+
+            User::find($user->id)->update([
+                'photo' => $image
+            ]);
         }
 
         $this->user = User::find($this->user->id);
