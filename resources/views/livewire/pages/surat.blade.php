@@ -41,6 +41,7 @@
                     <th>Kategori / Sub kategori</th>
                     <th>Jenis</th>
                     <th>Perihal</th>
+                    <th>Lock</th>
                     <th>Created at</th>
                     <th>Action</th>
                 </tr>
@@ -58,6 +59,11 @@
                     </td>
                     <td class="@if($data->jenis == 'masuk') text-success @endif capitalize">{{ $data->jenis }}</td>
                     <td>{{ Str::limit($data->perihal, 20) }}</td>
+                    <td>
+                        @if ($data->use_password)
+                        @livewire('component.icon', ['name' => 'lock'], key($data->id))
+                        @endif
+                    </td>
                     <td>{{ $data->created_at->diffForHumans() }}</td>
                     <td>
                         <a href="{{ route('detailsurat', $data->id) }}" class="btn btn-xs">detail</a>

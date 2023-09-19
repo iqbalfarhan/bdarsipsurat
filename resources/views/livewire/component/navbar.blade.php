@@ -31,7 +31,7 @@
                             <h2 class="menu-title">Hasil pencarian surat</h2>
                             <ul>
                                 @foreach ($surat as $surat_id => $perihal)
-                                <li><a href="" class="truncate">{{ $perihal }}</a></li>
+                                <li><a href="{{ route('detailsurat', $surat_id) }}" class="truncate">{{ $perihal }}</a></li>
                                 @endforeach
                             </ul>
                         </li>

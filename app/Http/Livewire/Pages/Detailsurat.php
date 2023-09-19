@@ -23,11 +23,9 @@ class Detailsurat extends Component
 
         if (Hash::check($this->password, $this->data->password)) {
             $this->canAccess = true;
-            $this->alert('success', 'Berhasil membuka dokumen');
-            return;
+            return $this->alert('success', 'Berhasil membuka dokumen');
         } else {
-            $this->alert('warning', 'Gagal membuka dokumen, password dokumen salah');
-            return;
+            return $this->alert('warning', 'Gagal membuka dokumen, password dokumen salah');
         }
 
     }

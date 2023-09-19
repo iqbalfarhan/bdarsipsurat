@@ -11,7 +11,7 @@
         <ul>
             <li><a href="{{ route('home') }}" class="{{ Route::is('home') ? 'active' : '' }}">@livewire('component.icon', ['name' => 'home'])Dashboard</a></li>
             @can('surat.index')
-            <li><a href="{{ route('surat') }}" class="{{ Route::is('surat') ? 'active' : '' }}">@livewire('component.icon', ['name' => 'mail'])Semua surat</a></li>
+            <li><a href="{{ route('surat') }}" class="{{ Route::is(['surat', 'detailsurat']) ? 'active' : '' }}">@livewire('component.icon', ['name' => 'mail'])Semua surat</a></li>
             @endcan
             @can('surat.create')
             <li><a href="{{ route('createsurat') }}" class="{{ Route::is('createsurat') ? 'active' : '' }}">@livewire('component.icon', ['name' => 'plus'])Tambah surat</a></li>

@@ -35,8 +35,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/home', Home::class)->name('home');
     Route::get('/surat', Surat::class)->name('surat');
-    Route::get('/dokumentasi', Dokumentasi::class)->name('dokumentasi');
     Route::get('/surat/{surat}', Detailsurat::class)->name('detailsurat');
+    Route::get('/dokumentasi', Dokumentasi::class)->name('dokumentasi');
     Route::get('/createsurat', Createsurat::class)->name('createsurat');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');

@@ -24,8 +24,18 @@ class Surat extends Model
         return $this->belongsTo(Subkategori::class);
     }
 
+    public function kategori()
+    {
+        return $this->subkategori->kategori();
+    }
+
     public function unit()
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
