@@ -30,7 +30,7 @@
         </div>
     </div>
     @else
-    <div class="flex justify-center items-center h-screen bg-base-200">
+    <div class="flex justify-center items-center h-screen bg-base-200" style="background-image: url('{{ url('images/bgrelic.png') }}')">
         <div class="card bg-base-100 shadow-2xl w-full max-w-5xl flex flex-row overflow-hidden m-6 lg:m-0">
             <div class="card-body flex-1 py-24">
                 {{ $slot }}

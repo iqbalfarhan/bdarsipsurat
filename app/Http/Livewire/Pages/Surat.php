@@ -65,20 +65,21 @@ class Surat extends Component
     }
     
     public function mount()
-    {    
-        $this->unit_id = auth()->user()->unit_id;   
+    {
+        $user = auth()->user();
+        $this->unit_id = $user->unit_id;   
 
-        if (auth()->user()->hasRole(['admin', 'superadmin'])) {
+        if ($user->hasRole(['admin', 'superadmin'])) {
             $this->allowedUnitId = Unit::get()->pluck('id');
         }
         else{
-            $this->allowedUnitId[] = auth()->user()->unit_id;
+            $this->allowedUnitId[] = $user->unit_id;
         }
     }
     
     public function render()
     {
-        $datas = ModelsSurat::when($this->unit_id, function ($q) {
+        $datas = ModelsSurat::whereIn('unit_id', $this->allowedUnitId)->when($this->unit_id, function ($q) {
             return $q->where('unit_id', $this->unit_id);
         })->when($this->jenis, function ($q) {
             return $q->where('jenis', $this->jenis);
@@ -89,7 +90,7 @@ class Surat extends Component
             return $q->whereIn('subkategori_id', $subkat_ids);
         })->when($this->subkat_id, function ($q) {
             return $q->where('subkategori_id', $this->subkat_id);
-        })->whereIn('unit_id', $this->allowedUnitId)->paginate($this->perpage);
+        })->paginate($this->perpage);
         
         return view('livewire.pages.surat', [
             'datas' => $datas,

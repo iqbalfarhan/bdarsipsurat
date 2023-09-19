@@ -21,7 +21,7 @@ class Login extends Component
         ]);
 
         if (Auth::attempt($valid)) {
-            $this->alert('success', 'Login Success, Selamat datang di '.config('app.name'));
+            $this->flash('success', 'Login Success, Selamat datang di '.config('app.name'));
             return redirect()->route('home');
         }
         else{

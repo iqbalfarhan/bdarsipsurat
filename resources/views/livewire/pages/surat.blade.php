@@ -6,10 +6,12 @@
             "subtitle" => "tampilkan semua surat yang tersedia",
         ])
         <div class="flex gap-2">
+            @can('surat.create')
             <a href="{{ route('createsurat') }}" class="btn btn-neutral">
                 @livewire('component.icon', ['name' => 'plus'])
                 <span>Tambah surat</span>
             </a>
+            @endcan
             <button class="btn btn-primary" wire:click="$set('showFilter', {{ !$showFilter }})">
                 @livewire('component.icon', ['name' => 'filter'])
             </button>
