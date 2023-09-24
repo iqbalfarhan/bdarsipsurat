@@ -21,9 +21,9 @@ class SuratFactory extends Factory
     public function definition(): array
     {
         return [
-            'subkategori_id' => fake()->randomElement(Subkategori::get()->pluck('id')),
-            'unit_id' => fake()->randomElement(Unit::get()->pluck('id')),
-            'user_id' => fake()->randomElement(User::get()->pluck('id')),
+            'subkategori_id' => fake()->randomElement(Subkategori::pluck('id')),
+            'unit_id' => fake()->randomElement(Unit::pluck('id')),
+            'user_id' => fake()->randomElement(User::pluck('id')),
             'jenis' => fake()->randomElement(['masuk', 'keluar']),
             'perihal' => fake()->sentence(),
             'use_password' => fake()->boolean(),

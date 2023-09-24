@@ -19,12 +19,16 @@ class PermissionSeeder extends Seeder
             'user.show',
             'user.edit',
             'user.delete',
+            'user.resetpassword',
 
             'surat.index',
             'surat.create',
             'surat.show',
             'surat.edit',
             'surat.delete',
+            'surat.moreactions',
+            'surat.restore',
+            'surat.forcedelete',
 
             'unit.index',
             'unit.create',
@@ -44,14 +48,20 @@ class PermissionSeeder extends Seeder
             'subkategori.edit',
             'subkategori.delete',
 
-            'pengaturan.menu'
+            'pengaturan.menu',
         ];
 
         foreach ($datas as $permission) {
             $permit = Permission::create(['name' => $permission]);
 
             if ($permit) {
-                $permit->assignRole('admin');
+                if (str_contains($permit, '.delete') == false) {
+                    $permit->assignRole('admin');
+                }
+            }
+
+            if(in_array($permit, ['surat.index', 'surat.show'])){
+                $permit->assignRole('user');
             }
         }
     }

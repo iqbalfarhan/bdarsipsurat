@@ -9,8 +9,9 @@
                     <input type="text" wire:model="username" class="input bg-base-200 shadow">
                     <select wire:model="role" class="select bg-base-200 shadow">
                         <option value="">Pilih role</option>
-                        <option value="admin">Administrator</option>
-                        <option value="user">user</option>
+                        @foreach ($roles as $role)
+                            <option value="{{ $role }}">{{ $role }}</option>
+                        @endforeach
                     </select>
                     <select wire:model="unit_id" class="select bg-base-200 shadow">
                         <option value="">Pilih unit</option>

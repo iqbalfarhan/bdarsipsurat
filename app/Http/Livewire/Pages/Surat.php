@@ -90,7 +90,7 @@ class Surat extends Component
             return $q->whereIn('subkategori_id', $subkat_ids);
         })->when($this->subkat_id, function ($q) {
             return $q->where('subkategori_id', $this->subkat_id);
-        })->paginate($this->perpage);
+        })->latest()->paginate($this->perpage);
         
         return view('livewire.pages.surat', [
             'datas' => $datas,

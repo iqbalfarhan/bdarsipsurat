@@ -10,10 +10,13 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Createsurat extends Component
+class Editsurat extends Component
 {
     use WithFileUploads, LivewireAlert;
     
+    public $surat;
+    public $surat_id;
+
     public $kategori_id;
     public $subkategori_id;
     public $unit_id;
@@ -22,6 +25,7 @@ class Createsurat extends Component
     public $use_password;
     public $password;
     public $file;
+    public $filebefore;
 
     public function simpan()
     {
@@ -41,37 +45,39 @@ class Createsurat extends Component
             $filename = $file->hashName('surat');
         }
 
-        Surat::create([
+        $this->surat->update([
             'subkategori_id' => $this->subkategori_id,
             'unit_id' => $this->unit_id,
             'jenis' => $this->jenis,
             'perihal' => $this->perihal,
-            'file' => $filename,
+            'file' => $this->file ? $filename : $this->filebefore,
             'use_password' => $this->use_password ? true : false,
             'password' => $this->use_password ? Hash::make($this->password) : null,
             'user_id' => auth()->id(),
         ]);
 
-        $this->alert('success', 'Surat berhasil ditambahkan');
+        $this->flash('success', 'Surat berhasil diedit');
 
-        $this->reset();
+        return redirect()->route('detailsurat', $this->surat_id);
+
     }
 
-    public function resetForm(){
-        $this->reset([
-            'subkategori_id',
-            'jenis',
-            "perihal",
-            "file",
-            "use_password",
-            "password",
-            "unit_id",
-        ]);
+    public function mount(Surat $surat){
+        $this->surat = $surat;
+
+        $this->surat_id = $surat->id;
+        $this->kategori_id = $surat->kategori_id;
+        $this->subkategori_id = $surat->subkategori_id;
+        $this->unit_id = $surat->unit_id;
+        $this->jenis = $surat->jenis;
+        $this->perihal = $surat->perihal;
+        $this->use_password = $surat->use_password;
+        $this->filebefore = $surat->file;
     }
 
     public function render()
     {
-        return view('livewire.pages.createsurat', [
+        return view('livewire.pages.editsurat', [
             'subkategories' => Kategori::get(),
             'units' => Unit::get()->pluck('name', 'id')
         ]);

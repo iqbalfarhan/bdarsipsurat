@@ -4,6 +4,7 @@ use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\Pages\Createsurat;
 use App\Http\Livewire\Pages\Detailsurat;
 use App\Http\Livewire\Pages\Dokumentasi;
+use App\Http\Livewire\Pages\Editsurat;
 use App\Http\Livewire\Pages\Home;
 use App\Http\Livewire\Pages\Login;
 use App\Http\Livewire\Pages\Profile;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', Home::class)->name('home');
     Route::get('/surat', Surat::class)->name('surat');
     Route::get('/surat/{surat}', Detailsurat::class)->name('detailsurat');
+    Route::get('/surat/{surat}/edit', Editsurat::class)->name('editsurat');
     Route::get('/dokumentasi', Dokumentasi::class)->name('dokumentasi');
     Route::get('/createsurat', Createsurat::class)->name('createsurat');
     Route::get('/profile', Profile::class)->name('profile');

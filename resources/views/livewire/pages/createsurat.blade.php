@@ -93,6 +93,9 @@
                             <span class="label-text">Upload file surat (*.pdf)</span>
                         </label>
                         <input wire:model="file" type="file" class="file-input bg-base-200 shadow @error('file') input-error @enderror" placeholder="file" accept="application/pdf">
+                        @if ($file)
+                            <iframe src="{{ $file->temporaryUrl() }}" frameborder="0" class="aspect-video"></iframe>
+                        @endif
                     </div>
                 </div>
             </div>

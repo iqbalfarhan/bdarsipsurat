@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Partial\User;
 use App\Models\Unit;
 use App\Models\User;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class Edit extends Component
 {
@@ -30,7 +31,7 @@ class Edit extends Component
         $this->user_id = $user->id;
         $this->name = $user->name;
         $this->username = $user->username;
-        $this->role = $user->role;
+        $this->role = $user->getRoleNames()->first();
         $this->unit_id = $user->unit_id;
         $this->show = true;
     }
@@ -55,6 +56,7 @@ class Edit extends Component
     {
         return view('livewire.partial.user.edit', [
             'units' => Unit::get()->pluck('name', 'id'),
+            'roles' => Role::whereNot('name', 'superadmin')->get()->pluck('name')
         ]);
     }
 }

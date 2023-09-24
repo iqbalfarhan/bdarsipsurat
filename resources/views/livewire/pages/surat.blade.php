@@ -2,8 +2,8 @@
     
     <div class="flex justify-between">
         @livewire('partial.header', [
-            "title" => "Semua surat",
-            "subtitle" => "tampilkan semua surat yang tersedia",
+        "title" => "Semua surat",
+        "subtitle" => "tampilkan semua surat yang tersedia",
         ])
         <div class="flex gap-2">
             @can('surat.create')
@@ -17,7 +17,7 @@
             </button>
         </div>
     </div>
-
+    
     <div class="flex flex-col lg:flex-row justify-between gap-2">
         <input type="text" class="input bg-base-100" wire:model="perihal" placeholder="Pencarian cepat">
         <select class="select bg-base-100" wire:model='perpage'>
@@ -66,12 +66,9 @@
                     </td>
                     <td>{{ $data->created_at->diffForHumans() }}</td>
                     <td>
-                        <a href="{{ route('detailsurat', $data->id) }}" class="btn btn-xs">detail</a>
-                        @if ($data->file)
-                        <button class="btn btn-xs" wire:click.prevent="download('{{ $data->id }}')">
-                            @livewire('component.icon', ['name' => 'filedownload'], key(uniqid()))
-                        </button>
-                        @endif
+                        <div class="flex gap-1">
+                            <a href="{{ route('detailsurat', $data->id) }}" class="btn btn-xs">detail</a>
+                        </div>
                     </td>
                 </tr>
                 @empty
@@ -87,41 +84,41 @@
             <h3 class="font-bold text-lg">Filter surat</h3>
             <div class="py-4 space-y-3">
                 @if ($showFilter)
-                    <select wire:model="unit_id" class="select w-full bg-base-200">
-                        <option value="">Semua unit</option>
-                        @foreach ($units as $unitid => $unitname)
-                        <option value="{{ $unitid }}">{{ $unitname }}</option>
-                        @endforeach
-                    </select>
-                    <select wire:model="kat_id" class="select w-full bg-base-200">
-                        <option value="">pilih kategori</option>
-                        @foreach ($kategories as $katid => $kat)
-                        <option value="{{ $katid }}">{{ $kat }}</option>
-                        @endforeach
-                    </select>
-                    <select wire:model="subkat_id" class="select w-full bg-base-200">
-                        <option value="">Semua subkategori</option>
-                        @foreach ($subkategories as $subkatid => $sub)
-                        <option value="{{ $subkatid }}">{{ $sub }}</option>
-                        @endforeach
-                    </select>
-                    <select wire:model="jenis" class="select w-full bg-base-200">
-                        <option value="">Semua jenis surat</option>
-                        <option value="masuk">Surat masuk</option>
-                        <option value="keluar">Surat keluar</option>
-                    </select>
-                    <input type="text" class="input w-full bg-base-200" placeholder="Perihal">
-                    <input type="date" class="input w-full bg-base-200" placeholder="tanggal">
-                </tr>
-                @endif
-            </div>
-            <div class="modal-action justify-between">
-                <button type="button" class="btn btn-warning" wire:click.prevent="resetFilter">
-                    reset filter
-                </button>
-                <label for="filterSurat" class="btn">Close!</label>
-            </div>
+                <select wire:model="unit_id" class="select w-full bg-base-200">
+                    <option value="">Semua unit</option>
+                    @foreach ($units as $unitid => $unitname)
+                    <option value="{{ $unitid }}">{{ $unitname }}</option>
+                    @endforeach
+                </select>
+                <select wire:model="kat_id" class="select w-full bg-base-200">
+                    <option value="">pilih kategori</option>
+                    @foreach ($kategories as $katid => $kat)
+                    <option value="{{ $katid }}">{{ $kat }}</option>
+                    @endforeach
+                </select>
+                <select wire:model="subkat_id" class="select w-full bg-base-200">
+                    <option value="">Semua subkategori</option>
+                    @foreach ($subkategories as $subkatid => $sub)
+                    <option value="{{ $subkatid }}">{{ $sub }}</option>
+                    @endforeach
+                </select>
+                <select wire:model="jenis" class="select w-full bg-base-200">
+                    <option value="">Semua jenis surat</option>
+                    <option value="masuk">Surat masuk</option>
+                    <option value="keluar">Surat keluar</option>
+                </select>
+                <input type="text" class="input w-full bg-base-200" placeholder="Perihal">
+                <input type="date" class="input w-full bg-base-200" placeholder="tanggal">
+            </tr>
+            @endif
+        </div>
+        <div class="modal-action justify-between">
+            <button type="button" class="btn btn-warning" wire:click.prevent="resetFilter">
+                reset filter
+            </button>
+            <label for="filterSurat" class="btn">Close!</label>
         </div>
     </div>
-    
+</div>
+
 </div>

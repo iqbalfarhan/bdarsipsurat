@@ -1,12 +1,16 @@
 <div class="fc6">
     <div class="flex justify-between">
         @livewire('partial.header', [
-        'title' => 'Detail ticket',
+        'title' => 'Detail dokumen',
         'subtitle' => $data->perihal
         ])
         
-        <div>
+        <div class="flex gap-2">
             @if ($canAccess)
+            <a href="{{ route('editsurat', $data->id) }}" class="btn btn-success">
+                @livewire('component.icon', ['name' => 'edit'])
+                <span class="hidden lg:block">Edit</span>
+            </a>
             <button class="btn btn-success">
                 @livewire('component.icon', ['name' => 'download'])
                 <span class="hidden lg:block">Download</span>
@@ -17,7 +21,7 @@
     @if ($canAccess)
     <div class="grid lg:grid-cols-3 gap-6 min-h-16">
         <div class="lg:col-span-2 fc4">
-            <div class="card bg-base-100 shadow">
+            <div class="card bg-base-100 shadow h-full">
                 <div class="card-body">
                     @if ($data->file)
                     <iframe src="{{ Storage::url($data->file) }}" frameborder="0" class="w-full min-h-full"></iframe>
@@ -28,28 +32,28 @@
             </div>
         </div>
         <div class="fc4">
-            <div class="card bg-base-100 shadow">
+            <div class="card card-compact bg-base-100 shadow">
                 <div class="card-body text-sm">
-                    <h3 class="card-title">Kategori</h3>
-                    {{ $data->kategori->name }}                    
-                    sub:{{ $data->subkategori->name }}                    
+                    <h3 class="card-title text-lg">Kategori</h3>
+                    {{ $data->kategori->name }}<br />
+                    sub:{{ $data->subkategori->name ?? "" }}                    
                 </div>
             </div>
-            <div class="card bg-base-100 shadow">
+            <div class="card card-compact bg-base-100 shadow">
                 <div class="card-body text-sm">
-                    <h3 class="card-title">Jenis surat</h3>
+                    <h3 class="card-title text-lg">Jenis surat</h3>
                     Surat {{ $data->jenis }}
                 </div>
             </div>
-            <div class="card bg-base-100 shadow">
+            <div class="card card-compact bg-base-100 shadow">
                 <div class="card-body text-sm">
-                    <h3 class="card-title">Diinput oleh</h3>
-                    {{ $data->user->name }} ({{ $data->user->unit->name }})
+                    <h3 class="card-title text-lg">Diinput oleh</h3>
+                    {{ $data->user->name ?? "" }} ({{ $data->user->unit->name ?? "" }})
                 </div>
             </div>
-            <div class="card bg-base-100 shadow">
+            <div class="card card-compact bg-base-100 shadow">
                 <div class="card-body text-sm">
-                    <h3 class="card-title">Tanggal input</h3>
+                    <h3 class="card-title text-lg">Tanggal input</h3>
                     {{ $data->created_at->format('d F Y H:i') }} ({{ $data->created_at->diffForHumans() }})
                 </div>
             </div>

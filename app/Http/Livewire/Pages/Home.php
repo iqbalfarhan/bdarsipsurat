@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Pages;
 use App\Models\Kategori;
 use App\Models\Subkategori;
 use App\Models\Surat;
+use App\Models\Unit;
 use Livewire\Component;
 
 class Home extends Component
@@ -40,12 +41,16 @@ class Home extends Component
 
     public function render()
     {
+        $allowedUnit = auth()->user()->hasRole(['admin', 'superadmin']) ? Unit::pluck('id') : [auth()->user()->unit_id];
+
+        // dd($allowedUnit);
+
         return view('livewire.pages.home', [
             'kategories' => Kategori::get()->pluck('name', 'id'),
             'subkategories' => Subkategori::when($this->kat, function ($q) {
                 return $q->where('kategori_id', $this->kat);
             })->get()->pluck('name', 'id'),
-            'surats' => Surat::when($this->sub, function ($q) {
+            'surats' => Surat::whereIn('unit_id', $allowedUnit)->when($this->sub, function ($q) {
                 return $q->where('subkategori_id', $this->sub);
             })->get()->pluck('perihal', 'id'),
         ]);

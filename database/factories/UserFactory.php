@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'username' => fake()->userName(),
             'password' => Hash::make('password'),
-            'unit_id' => fake()->randomElement(Unit::get()->pluck('id'))
+            'unit_id' => fake()->randomElement(Unit::pluck('id'))
         ];
     }
 

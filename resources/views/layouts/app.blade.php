@@ -45,7 +45,7 @@
                 
                 <div class="text-neutral-content">
                     <h3 class="text-2xl">{{ config('app.name') }}</h3>
-                    <div>sistem informasi</div>
+                    <div>{{ config('app.desc') }}</div>
                 </div>
             </div>
         </div>
