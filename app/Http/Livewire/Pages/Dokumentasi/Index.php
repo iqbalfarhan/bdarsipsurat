@@ -10,7 +10,7 @@ class Index extends Component
 {
     public $selected;
     public $judul = "Selamat datanng di halaman dokumentasi";
-    public $text = "silakan pilih menu dokumentasi untuk melihat detail dokumentasi. dokumentasi sudah di grouping berdasarkan lorem ipsum";
+    public $text;
 
     protected $listeners = [
         'reload' => '$refresh'
@@ -29,7 +29,12 @@ class Index extends Component
     }
 
     public function resetText(){
-        $this->reset();
+        $this->mount();
+    }
+
+    public function mount()
+    {
+        $this->text = file_get_contents(base_path('README.md'));
     }
 
     public function render()

@@ -13,7 +13,10 @@
         @endcan
     </div>
     <div class="flex flex-col lg:flex-row gap-6">
-        <ul class="menu bg-base-200 w-80 rounded-box">
+        <ul class="menu bg-base-200 w-80 rounded-box gap-6">
+            <div>
+                <input type="text" class="input w-full" placeholder="pencarian">
+            </div>
             <li><button wire:click.prevent='resetText'>Home dokumentasi</button></li>
             @foreach ($datas as $title => $data)
             <li>
