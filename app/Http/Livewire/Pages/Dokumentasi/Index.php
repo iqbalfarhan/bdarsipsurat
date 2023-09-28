@@ -8,8 +8,8 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $cari;
     public $selected;
-    public $judul = "Selamat datanng di halaman dokumentasi";
     public $text;
 
     protected $listeners = [
@@ -18,14 +18,12 @@ class Index extends Component
 
     public function selectDoc(Doc $dokumentasi)
     {
-        $this->selected = $dokumentasi->id;
-        $this->judul = $dokumentasi->title;
-        $this->text = $dokumentasi->description;
+        $this->selected = $dokumentasi;
     }
 
     public function editDokumentasi()
     {
-        $this->emit('editDokumentasi', $this->selected);
+        $this->emit('editDokumentasi', $this->selected->id);
     }
 
     public function resetText(){
@@ -40,7 +38,9 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.dokumentasi.index', [
-            'datas' => Doc::get()->groupBy('group')
+            'datas' => Doc::when($this->cari, function($q){
+                $q->where('title', 'like', '%'.$this->cari.'%');
+            })->get()->groupBy('group')
         ]);
     }
 }
