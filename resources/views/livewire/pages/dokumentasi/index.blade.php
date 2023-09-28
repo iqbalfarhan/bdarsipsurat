@@ -37,7 +37,6 @@
                             <h3 class="card-title">{{ $judul }}</h3>
                             @can('dokumentasi.edit')
                                 <button class="btn btn-xs" wire:click.prevent="editDokumentasi">
-                                    {{ $selected }}
                                     @livewire('component.icon', ['name' => 'edit'])
                                 </button>
                             @endcan
