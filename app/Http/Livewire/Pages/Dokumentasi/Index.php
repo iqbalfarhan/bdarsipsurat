@@ -27,7 +27,7 @@ class Index extends Component
     }
 
     public function resetText(){
-        $this->mount();
+        $this->reset(['selected']);
     }
 
     public function mount()
