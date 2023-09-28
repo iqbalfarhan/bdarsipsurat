@@ -13,6 +13,6 @@ class SuratSeeder extends Seeder
      */
     public function run(): void
     {
-        Surat::factory(133)->create();
+        Surat::factory(57)->create();
     }
 }

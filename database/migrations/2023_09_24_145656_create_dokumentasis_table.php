@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('dokumentasis', function (Blueprint $table) {
             $table->id();
             $table->string('group')->default('lainnya');
-            $table->string('permission')->nullable();
+            $table->string('permission')->unique();
             $table->string('title');
             $table->text('description');
+            $table->string('video')->nullable();
             $table->timestamps();
         });
     }

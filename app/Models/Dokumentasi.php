@@ -14,5 +14,6 @@ class Dokumentasi extends Model
         'permission',
         'title',
         'description',
+        'video',
     ];
 }

@@ -5,10 +5,12 @@
             'subtitle' => 'Buku panduan dan Video tutorial penggunaan aplikasi'
         ])
 
+        @can('dokumentasi.create')
         <label class="btn btn-neutral" for="createDokumentasi">
             @livewire('component.icon', ['name' => 'plus'])
             <span class="hidden lg:block">Tambah dokumentasi</span>
         </label>
+        @endcan
     </div>
     <div class="flex flex-col lg:flex-row gap-6">
         <ul class="menu bg-base-200 w-80 rounded-box">
@@ -27,15 +29,18 @@
             @endforeach
         </ul>
 
-        <div class="">
+        <div class="w-full">
             <div class="card bg-base-100 shadow w-full">
                 <div class="card-body">
                     <div class="fc6">
                         <div class="flex justify-between">
                             <h3 class="card-title">{{ $judul }}</h3>
-                            <button class="btn btn-xs">
-                                @livewire('component.icon', ['name' => 'edit'])
-                            </button>
+                            @can('dokumentasi.edit')
+                                <button class="btn btn-xs" wire:click.prevent="editDokumentasi">
+                                    {{ $selected }}
+                                    @livewire('component.icon', ['name' => 'edit'])
+                                </button>
+                            @endcan
                         </div>
                         <article class="prose lg:prose-lg">
                             {!! Str::markdown($text) !!}
@@ -47,4 +52,5 @@
     </div>
 
     @livewire('pages.dokumentasi.create')
+    @livewire('pages.dokumentasi.edit')
 </div>

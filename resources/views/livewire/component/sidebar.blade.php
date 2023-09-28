@@ -11,17 +11,29 @@
         <ul>
             <li><a href="{{ route('home') }}" class="{{ Route::is('home') ? 'active' : '' }}">@livewire('component.icon', ['name' => 'home'])Dashboard</a></li>
             @can('surat.index')
-            <li><a href="{{ route('surat') }}" class="{{ Route::is(['surat', 'detailsurat']) ? 'active' : '' }}">@livewire('component.icon', ['name' => 'mail'])Semua surat</a></li>
+            <li>
+                <a href="{{ route('surat') }}" class="{{ Route::is(['surat', 'detailsurat']) ? 'active' : '' }}">
+                    @livewire('component.icon', ['name' => 'mail'])
+                    <span>Semua surat</span>
+                </a>
+            </li>
             @endcan
             @can('surat.create')
-            <li><a href="{{ route('createsurat') }}" class="{{ Route::is('createsurat') ? 'active' : '' }}">@livewire('component.icon', ['name' => 'plus'])Tambah surat</a></li>
+            <li>
+                <a href="{{ route('createsurat') }}" class="{{ Route::is('createsurat') ? 'active' : '' }}">
+                    @livewire('component.icon', ['name' => 'plus'])
+                    <span>Tambah surat</span>
+                </a>
+            </li>
             @endcan
+            @can('dokumentasi.index')
             <li>
                 <a href="{{ route('dokumentasi.index') }}" class="{{ Route::is('dokumentasi.index') ? 'active' : '' }}">
                     @livewire('component.icon', ['name' => 'book'])
                     <span>Manual Book</span>
                 </a>
             </li>
+            @endcan
         </ul>
     </li>
 

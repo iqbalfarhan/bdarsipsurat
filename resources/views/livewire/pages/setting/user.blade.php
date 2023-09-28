@@ -24,9 +24,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($datas as $data)
+                @foreach ($datas as $key => $data)
                 <tr>
-                    <th>{{ $data->id }}</th>
+                    <th>{{ $key+1 }}</th>
                     <td>
                         <div class="flex items-center gap-2">
                             <div class="avatar">
