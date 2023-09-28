@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/surat', Surat::class)->name('surat');
     Route::get('/surat/{surat}', Detailsurat::class)->name('detailsurat');
     Route::get('/surat/{surat}/edit', Editsurat::class)->name('editsurat');
-    Route::get('/dokumentasi', Dokumentasi::class)->name('dokumentasi');
+    Route::get('/dokumentasi', \App\Http\Livewire\Pages\Dokumentasi\Index::class)->name('dokumentasi.index');
     Route::get('/createsurat', Createsurat::class)->name('createsurat');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');

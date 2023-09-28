@@ -49,6 +49,11 @@ class PermissionSeeder extends Seeder
             'subkategori.delete',
 
             'pengaturan.menu',
+
+            'dokumentasi.index',
+            'dokumentasi.create',
+            'dokumentasi.edit',
+            'dokumentasi.delete',
         ];
 
         foreach ($datas as $permission) {

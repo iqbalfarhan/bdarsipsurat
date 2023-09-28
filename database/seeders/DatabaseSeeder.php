@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             KategoriSeeder::class,
             SuratSeeder::class,
             PermissionSeeder::class,
+            DokumentasiSeeder::class,
         ]);
     }
 }

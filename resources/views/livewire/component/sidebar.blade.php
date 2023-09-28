@@ -16,7 +16,12 @@
             @can('surat.create')
             <li><a href="{{ route('createsurat') }}" class="{{ Route::is('createsurat') ? 'active' : '' }}">@livewire('component.icon', ['name' => 'plus'])Tambah surat</a></li>
             @endcan
-            <li><a href="{{ route('dokumentasi') }}" class="{{ Route::is('dokumentasi') ? 'active' : '' }}">@livewire('component.icon', ['name' => 'search'])Dokumentasi</a></li>
+            <li>
+                <a href="{{ route('dokumentasi.index') }}" class="{{ Route::is('dokumentasi.index') ? 'active' : '' }}">
+                    @livewire('component.icon', ['name' => 'book'])
+                    <span>Manual Book</span>
+                </a>
+            </li>
         </ul>
     </li>
 

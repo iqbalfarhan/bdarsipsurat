@@ -72,6 +72,13 @@ class KategoriSeeder extends Seeder
                 "Perwatan Kesehatan dan Rehabilitasi",
                 "Keamanan dan Ketertiban",
             ],
+            "PERATURAN" => [
+                "Undang-undang",
+                "Peraturan Pemerintah",
+                "Peraturan Menteri",
+                "Keputusan Menteri",
+                "SUrat Edaran",
+            ]
         ];
 
 
