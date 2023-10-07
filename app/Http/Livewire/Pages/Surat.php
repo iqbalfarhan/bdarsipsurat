@@ -21,6 +21,7 @@ class Surat extends Component
         'reload' => '$refresh'
     ];
     
+    public $no = 1;
     public $showFilter = false;
     public $perpage = 25;
     public $allowedUnitId = [];

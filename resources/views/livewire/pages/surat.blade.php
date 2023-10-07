@@ -49,7 +49,7 @@
             <tbody>
                 @forelse ($datas as $data)
                 <tr>
-                    <th>{{ $data->id }}</th>
+                    <th>{{ ($datas->currentpage()-1) * $datas->perpage() + $loop->index + 1 }}</th>
                     <td>{{ Str::limit($data->unit->name ?? "", 20) }}</td>
                     <td>
                         <div class="flex flex-col">
