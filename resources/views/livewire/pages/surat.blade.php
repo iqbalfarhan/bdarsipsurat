@@ -67,7 +67,12 @@
                     <td>{{ $data->created_at->diffForHumans() }}</td>
                     <td>
                         <div class="flex gap-1">
+                            @can('surat.show')
                             <a href="{{ route('detailsurat', $data->id) }}" class="btn btn-xs">detail</a>
+                            @endcan
+                            @can('surat.delete')
+                            <button wire:click.prevent='deleteSurat({{ $data->id }})' class="btn btn-xs btn-error">hapus</button>
+                            @endcan
                         </div>
                     </td>
                 </tr>

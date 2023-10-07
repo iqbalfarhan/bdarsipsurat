@@ -76,6 +76,10 @@ class Surat extends Component
             $this->allowedUnitId[] = $user->unit_id;
         }
     }
+
+    public function deleteSurat(ModelsSurat $surat){
+        $surat->delete();
+    }
     
     public function render()
     {

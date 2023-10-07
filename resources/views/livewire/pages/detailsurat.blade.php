@@ -7,10 +7,12 @@
         
         <div class="flex gap-2">
             @if ($canAccess)
+            @can('surat.edit')
             <a href="{{ route('editsurat', $data->id) }}" class="btn btn-success">
                 @livewire('component.icon', ['name' => 'edit'])
                 <span class="hidden lg:block">Edit</span>
             </a>
+            @endcan
             <button class="btn btn-success">
                 @livewire('component.icon', ['name' => 'download'])
                 <span class="hidden lg:block">Download</span>
