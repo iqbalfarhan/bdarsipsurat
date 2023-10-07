@@ -11,6 +11,9 @@
             </button>
         </div>
     </div>
+    <div>
+        <input type="text" class="input" wire:model='cari' placeholder="Cari kategori">
+    </div>
     <div class="overflow-x-auto bg-base-100 overflow-hidden rounded-xl shadow">
         <table class="table whitespace-nowrap">
             <thead>
@@ -26,13 +29,15 @@
                     <tr>
                         @if ($key === 0)
                             <td rowspan="{{ $data->subs_count }}">{{ $number+1 }}</td>
-                            <td rowspan="{{ $data->subs_count }}">{{ $data->name }}</td>
+                            <td rowspan="{{ $data->subs_count }}">
+                                {{ $data->name }}
+                            </td>
                         @endif
                         <td>- {{ $sub->name }}</td>
                         <td>{{ $sub->surats->count() }}</td>
                         <td>
-                            <button class="btn btn-xs">detail</button>
-                            <button class="btn btn-xs btn-success">edit</button>
+                            <button wire:click.prevent="$emit('showKategori', {{ $sub->id }})" class="btn btn-xs">detail</button>
+                            <button wire:click.prevent="$emit('editKategori', {{ $sub->id }})" class="btn btn-xs btn-success">edit</button>
                             <button class="btn btn-xs btn-error">delete</button>
                         </td>
                     </tr>
@@ -41,4 +46,7 @@
             </tbody>
         </table>
     </div>
+
+    @livewire('partial.kategori.show')
+    @livewire('partial.kategori.edit')
 </div>
