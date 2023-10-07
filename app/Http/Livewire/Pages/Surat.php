@@ -66,8 +66,8 @@ class Surat extends Component
     
     public function mount()
     {
-        $user = auth()->user();
-        $this->unit_id = $user->unit_id;   
+        // $user = auth()->user();
+        // $this->unit_id = $user->unit_id;
 
         $this->allowedUnitId = Unit::get()->pluck('id');
         // if ($user->hasRole(['admin', 'superadmin'])) {
