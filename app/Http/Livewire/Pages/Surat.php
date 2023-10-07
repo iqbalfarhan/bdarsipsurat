@@ -69,12 +69,12 @@ class Surat extends Component
         $user = auth()->user();
         $this->unit_id = $user->unit_id;   
 
-        if ($user->hasRole(['admin', 'superadmin'])) {
-            $this->allowedUnitId = Unit::get()->pluck('id');
-        }
-        else{
-            $this->allowedUnitId[] = $user->unit_id;
-        }
+        $this->allowedUnitId = Unit::get()->pluck('id');
+        // if ($user->hasRole(['admin', 'superadmin'])) {
+        // }
+        // else{
+        //     $this->allowedUnitId[] = $user->unit_id;
+        // }
     }
 
     public function deleteSurat(ModelsSurat $surat){
