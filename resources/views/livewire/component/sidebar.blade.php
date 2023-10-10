@@ -1,11 +1,17 @@
-<ul class="menu p-4 w-80 h-full bg-base-100 text-base-content shadow space-y-6">
-    {{-- <div class="flex justify-center gap-4">
-        <img src="{{ Storage::url('simpatik logo.png') }}" alt="" class="w-10 self-center">
-        <div class="flex flex-col justify-center">
-            <span class="text-lg">{{ config('app.name') }}</span>
-            <span class="text-xs overflow-ellipsis small">Sistem informasi</span>
+<ul class="menu p-4 w-80 h-full bg-base-100 text-base-content shadow space-y-6" >
+    <li>
+        <div>
+            <div class="avatar">
+                <div class="w-12 rounded-full">
+                    <img src="{{ url('images/simpatik logo.png') }}" alt="" class="" />
+                </div>
+            </div>
+            <div>
+                <div class="text-lg font-semibold">{{ config('app.name') }}</div>
+                <div class="text-xs opacity-70">{{ config('app.desc') }}</div>
+            </div>
         </div>
-    </div> --}}
+    </li>
     <li>
         <h2 class="menu-title">Menu utama</h2>
         <ul>

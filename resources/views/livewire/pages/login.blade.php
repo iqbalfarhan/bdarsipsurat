@@ -1,8 +1,10 @@
 <form wire:submit.prevent="submit" class="flex flex-col gap-4 lg:px-8">
     <div class="text-center fc4">
         <img src="{{ url('images/simpatik logo.png') }}" alt="" class="w-24 self-center flex lg:hidden" />
-        <h3 class="text-3xl">Login aplikasi</h3>
-        <span class="text-sm">Silakan masuk aplikasi menggunakan akun yang sudah terdaftar</span>
+        <div class="text-center">
+            <h3 class="text-3xl">{{ config('app.name') }}</h3>
+            <span class="text-sm">{{ config('app.desc') }}</span>
+        </div>
     </div>
 
     <div class="py-4 flex flex-col gap-3">

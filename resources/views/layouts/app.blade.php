@@ -30,12 +30,15 @@
         </div>
     </div>
     @else
-    <div class="flex justify-center items-center h-screen bg-base-200" style="background-image: url('{{ url('images/bgrelic.png') }}')">
-        <div class="card bg-base-100 shadow-2xl w-full max-w-5xl flex flex-row overflow-hidden m-6 lg:m-0">
+    <div class="flex justify-center items-center h-screen bg-base-200 bg-contain" style="background-image: url('{{ url('images/bgbatik.webp') }}')">
+        <div class="card bg-base-100 shadow-2xl w-full max-w-lg flex flex-row overflow-hidden m-6 lg:m-0">
             <div class="card-body flex-1 py-24">
+                <div class="flex justify-center items-center">
+                    <img src="{{ url('images/simpatik logo.png') }}" alt="" class="w-32" />
+                </div>
                 {{ $slot }}
             </div>
-            <div class="card-body backdrop-blur-3xl bg-neutral flex-1 hidden lg:flex justify-between">
+            {{-- <div class="card-body backdrop-blur-3xl bg-neutral flex-1 hidden lg:flex justify-between">
                 <div class="avatar">
                     <div class="w-24 mask mask-squircle bg-base-100 p-4 shadow-2xl">
                         <img src="{{ url('images/simpatik logo.png') }}" alt="" class="w-24" />
@@ -47,7 +50,7 @@
                     <h3 class="text-2xl">{{ config('app.name') }}</h3>
                     <div>{{ config('app.desc') }}</div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     @endauth
