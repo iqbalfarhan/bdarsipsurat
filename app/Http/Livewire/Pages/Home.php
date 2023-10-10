@@ -46,7 +46,7 @@ class Home extends Component
         // dd($allowedUnit);
 
         return view('livewire.pages.home', [
-            'kategories' => Kategori::get()->pluck('name', 'id'),
+            'kategories' => Kategori::get(),
             'subkategories' => Subkategori::when($this->kat, function ($q) {
                 return $q->where('kategori_id', $this->kat);
             })->get()->pluck('name', 'id'),

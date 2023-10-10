@@ -15,7 +15,7 @@
 <body data-theme="light">
     
     @auth
-    <div class="drawer lg:drawer-open">
+    <div class="drawer lg:drawer-open min-h-screen">
         <input id="drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content bg-base-200 flex flex-col flex-1 min-h-screen overflow-x-auto">
             @livewire('component.navbar')

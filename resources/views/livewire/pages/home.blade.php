@@ -8,12 +8,12 @@
 
     @livewire('component.stats')
     
-    <div class="bg-base-300 rounded-xl overflow-hidden shadow">
-        <div class="carousel w-full m-4 mb-0">
-            @foreach ($kategories as $katid => $katname)
-                <a class="tab tab-lifted tab-lg {{ $kat == $katid ? "tab-active" : "" }}" wire:click.prevent="setkat('{{ $katid }}', '{{ $katname }}')">
-                    <span class="whitespace-nowrap">
-                        {{ $katname }}
+    <div class="bg-base-100 rounded-xl shadow overflow-hidden">
+        <div class="flex flex-wrap w-full m-4">
+            @foreach ($kategories as $kategori)
+                <a class="btn m-1 {{ $kat == $kategori->id ? "" : "opacity-40" }}" style="background-color: {{ $kategori->color }}" wire:click.prevent="setkat('{{ $kategori->id }}', '{{ $kategori->name }}')">
+                    <span>
+                        {{ $kategori->name }}
                     </span>
                 </a>
             @endforeach

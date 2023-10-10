@@ -1,7 +1,7 @@
 <div class="navbar bg-neutral text-neutral-content shadow-sm">
     <div class="flex-none">
         <label for="drawer" class="btn btn-square btn-ghost lg:hidden">
-            @livewire('component.icon', ['name' => 'menu'])
+            <x-tabler-align-left />
         </label>
     </div>
     <div class="flex-1">
@@ -9,7 +9,7 @@
     </div>
     <div class="flex-none">
         <label for="search" class="btn btn-circle btn-ghost">
-            @livewire('component.icon', ['name' => 'search'])
+            <x-tabler-search />
         </label>
         
         <input type="checkbox" id="search" class="modal-toggle" />
@@ -18,7 +18,7 @@
                 <div class="card-actions justify-between items-center">
                     <h3 class="card-title">Pencarian</h3>
                     <label for="search" class="btn btn-ghost btn-circle btn-sm">
-                        @livewire('component.icon', ['name' => 'x'])
+                        <x-tabler-x />
                     </label>
                     
                 </div>

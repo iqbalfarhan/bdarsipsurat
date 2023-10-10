@@ -1,14 +1,11 @@
 <div class="fc6">
     <div class="flex justify-between gap-4">
         @livewire('partial.header', [
-            "title" => "Pengatuan kategori",
-            "subtitle" => "Atur data kategori dan subkategori",
+        "title" => "Pengatuan kategori",
+        "subtitle" => "Atur data kategori dan subkategori",
         ])
         <div class="flex gap-2">
             @livewire('partial.kategori.create', ['datas' => $datas])
-            <button class="btn btn-primary">
-                @livewire('component.icon', ['name' => 'filter'])
-            </button>
         </div>
     </div>
     <div>
@@ -25,28 +22,37 @@
             </thead>
             <tbody>
                 @foreach ($datas as $number => $data)
-                    @foreach ($data->subs as $key => $sub)
-                    <tr>
-                        @if ($key === 0)
-                            <td rowspan="{{ $data->subs_count }}">{{ $number+1 }}</td>
-                            <td rowspan="{{ $data->subs_count }}">
-                                {{ $data->name }}
-                            </td>
-                        @endif
-                        <td>- {{ $sub->name }}</td>
-                        <td>{{ $sub->surats->count() }}</td>
-                        <td>
-                            <button wire:click.prevent="$emit('showKategori', {{ $sub->id }})" class="btn btn-xs">detail</button>
-                            <button wire:click.prevent="$emit('editKategori', {{ $sub->id }})" class="btn btn-xs btn-success">edit</button>
-                            <button class="btn btn-xs btn-error">delete</button>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach ($data->subs as $key => $sub)
+                <tr>
+                    @if ($key === 0)
+                    <td rowspan="{{ $data->subs_count }}">{{ $number+1 }}</td>
+                    <td rowspan="{{ $data->subs_count }}">
+                        <div class="flex flex-col">
+                            <div>
+                                <button class="btn btn-sm" style="background-color: {{ $data->color }}" wire:click.prevent="$emit('editKat', {{ $data->id }})">
+                                    <span>{{ $data->name }}</span>
+                                    <x-tabler-edit class="w-4 h-4" />
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                    @endif
+                    <td>- {{ $sub->name }}</td>
+                    <td>{{ $sub->surats->count() }}</td>
+                    <td>
+                        <button wire:click.prevent="$emit('showKategori', {{ $sub->id }})" class="btn btn-xs">detail</button>
+                        <button wire:click.prevent="$emit('editKategori', {{ $sub->id }})" class="btn btn-xs btn-success">edit</button>
+                        <button class="btn btn-xs btn-error">delete</button>
+                    </td>
+                </tr>
+                @endforeach
                 @endforeach
             </tbody>
         </table>
     </div>
+    
+    @livewire('partial.kategori.edit')
 
     @livewire('partial.kategori.show')
-    @livewire('partial.kategori.edit')
+    @livewire('partial.kategori.editsub')
 </div>

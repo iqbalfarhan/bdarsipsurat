@@ -10,11 +10,16 @@ class Kategori extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'warna',
     ];
 
     public function subs()
     {
         return $this->hasMany(Subkategori::class);
+    }
+
+    public function getColorAttribute(){
+        return $this->warna ?? '#e1e1e1';
     }
 }

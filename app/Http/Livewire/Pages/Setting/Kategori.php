@@ -14,8 +14,6 @@ class Kategori extends Component
         'reload' => '$refresh',
     ];
 
-    public $showsub = false;
-
     public function render()
     {
         $datas = ModelsKategori::when($this->cari, function($q){
