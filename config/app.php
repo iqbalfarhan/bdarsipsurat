@@ -163,6 +163,7 @@ return [
 
         Spatie\Permission\PermissionServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Onecentlin\Adminer\ServiceProvider::class,
 
         /*
          * Application Service Providers...

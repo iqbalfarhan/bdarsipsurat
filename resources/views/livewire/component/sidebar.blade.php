@@ -73,6 +73,14 @@
                 </a>
             </li>
             @endcan
+            @can('adminer.index')
+                <li>
+                    <a href="/adminer">
+                        <x-tabler-database class="w-4 h-4" />
+                        Adminer database
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
     @endcan
