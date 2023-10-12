@@ -40,9 +40,15 @@
                     <td>- {{ $sub->name }}</td>
                     <td>{{ $sub->surats->count() }}</td>
                     <td>
-                        <button wire:click.prevent="$emit('showKategori', {{ $sub->id }})" class="btn btn-xs">detail</button>
-                        <button wire:click.prevent="$emit('editsub', {{ $sub->id }})" class="btn btn-xs btn-success">edit</button>
-                        <button wire:click.prevent='deleteSubkat({{ $sub->id }})' class="btn btn-xs btn-error">delete</button>
+                        @can('subkategori.show')
+                            <button wire:click.prevent="$emit('showKategori', {{ $sub->id }})" class="btn btn-xs">detail</button>
+                        @endcan
+                        @can('subkategori.edit')
+                            <button wire:click.prevent="$emit('editsub', {{ $sub->id }})" class="btn btn-xs btn-success">edit</button>
+                        @endcan
+                        @can('subkategori.delete')
+                            <button wire:click.prevent='deleteSubkat({{ $sub->id }})' class="btn btn-xs btn-error">delete</button>
+                        @endcan
                     </td>
                 </tr>
                 @endforeach
