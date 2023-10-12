@@ -1,6 +1,5 @@
 <form wire:submit.prevent="submit" class="flex flex-col gap-4 lg:px-8">
     <div class="text-center fc4">
-        <img src="{{ url('images/simpatik logo.png') }}" alt="" class="w-24 self-center flex lg:hidden" />
         <div class="text-center">
             <h3 class="text-3xl">{{ config('app.name') }}</h3>
             <span class="text-sm">{{ config('app.desc') }}</span>

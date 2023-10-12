@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Pages\Setting;
 
 use App\Models\Kategori as ModelsKategori;
+use App\Models\Subkategori;
 use Livewire\Component;
 
 class Kategori extends Component
@@ -13,6 +14,10 @@ class Kategori extends Component
     protected $listeners = [
         'reload' => '$refresh',
     ];
+
+    public function deleteSubkat(Subkategori $subkategori){
+        $subkategori->delete();
+    }
 
     public function render()
     {
