@@ -94,12 +94,14 @@
     <li>
         <h2 class="menu-title">Pengaturan akun</h2>
         <ul>
-            <li>
-                <a href="{{ route('profile') }}" class="{{ Route::is('profile') ? 'active' : '' }}">
-                    @livewire('component.icon', ['name' => 'user'])
-                    Edit profile
-                </a>
-            </li>
+            @can('user.profile')
+                <li>
+                    <a href="{{ route('profile') }}" class="{{ Route::is('profile') ? 'active' : '' }}">
+                        @livewire('component.icon', ['name' => 'user'])
+                        Edit profile
+                    </a>
+                </li>
+            @endcan
             <li><button wire:click="$emit('logout')">@livewire('component.icon', ['name' => 'logout'])Logout</button></li>
         </ul>
     </li>
