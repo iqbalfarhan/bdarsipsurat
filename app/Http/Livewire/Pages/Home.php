@@ -41,9 +41,8 @@ class Home extends Component
 
     public function render()
     {
-        $allowedUnit = auth()->user()->hasRole(['admin', 'superadmin']) ? Unit::pluck('id') : [auth()->user()->unit_id];
-
-        // dd($allowedUnit);
+        // $allowedUnit = auth()->user()->hasRole(['admin', 'superadmin']) ? Unit::pluck('id') : [auth()->user()->unit_id];
+        $allowedUnit = Unit::pluck('id');
 
         return view('livewire.pages.home', [
             'kategories' => Kategori::get(),
